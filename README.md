@@ -1,0 +1,1 @@
+Design by Jake, web site: [http://jakewbell.com/pokedex.html](http://jakewbell.com/pokedex.html)

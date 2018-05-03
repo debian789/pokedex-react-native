@@ -3,6 +3,6 @@ import Reducers from './reducers'
 import thunk from 'redux-thunk'
 
 export default configureStore = () => {
-    const store = createStore(Reducers, applyMiddleware(thunk))
+    let store = createStore(Reducers, applyMiddleware(thunk))
     return store
 }

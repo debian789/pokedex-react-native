@@ -2,13 +2,16 @@ import React, {Component} from 'react'
 import {View} from 'react-native'
 import {Provider} from 'react-redux'
 import configureStore from './configureStore'
+import PokemonListComponent from './components/pokemonList/pokemonList.component'
 
-const store = configureStore()
+let store = configureStore()
 
 const App = () => {
-  <Provider store={store}>
-    <View></View>
-  </Provider>
+  return(<Provider store={store}>
+    <View style={{flex:1}}>
+    <PokemonListComponent></PokemonListComponent>
+    </View>
+  </Provider>)
 }
 
 export default App
