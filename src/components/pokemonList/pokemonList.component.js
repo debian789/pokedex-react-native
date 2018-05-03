@@ -17,7 +17,6 @@ class PokemonListComponent extends Component {
 
     render() {
         let {pokemons} = this.props
-        debugger
         return(<FlatList
             data= {pokemons.data}
             renderItem={this._renderItem}
