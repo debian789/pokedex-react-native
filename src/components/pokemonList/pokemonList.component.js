@@ -1,28 +1,28 @@
 import React, {Component} from 'react'
 import {View, Text, FlatList} from 'react-native'
-import {fetchData} from '../../actions'
+import {fetchDataList, updataDataSuccess} from '../../actions'
 import {connect} from 'react-redux'
 import constants from '../../commons/constants'
+
 
 class PokemonListComponent extends Component {
 
     componentWillMount() {
-        this.props.fetchData()
+        this.props.fetchData(constants.environment.PAGINATION.offset)
     }
-
 
     _renderItem({item, index})  {
         return <Text>{item.name} - {index}</Text>
     }
 
     _handleRefresh() {
-        //debugger
-        this.children.props.extraData.fetchData()
-        //props.fetchData()
+        this.children.props.extraData.fetchData(constants.environment.PAGINATION.offset)
     }
 
     _handleLoadMore() {
-        debugger
+        // data old 
+        // 
+        this.props.fetchData(this.props.pokemons.offset, this.props.pokemons.data)
     }
 
     render() {
@@ -35,16 +35,12 @@ class PokemonListComponent extends Component {
             extraData={this.props}
             renderItem= {this._renderItem}
             refreshing= {pokemons.isRefreshing}
-          
-            onRefresh= {this._handleRefresh}
-           
+            onEndReached={() => {return this._handleLoadMore.bind(this)()}}
+            onRefresh= {this._handleRefresh}           
         ></FlatList>)
     }
 }
-/*
 
-            onEndReached={this._handleLoadMore}
-*/
 const mapStateToProps = (state) => {   
     return {
         pokemons: state.pokemons
@@ -53,8 +49,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchData: () => {
-            return dispatch(fetchData(constants.endpoinds.list_pokemon))
+        fetchData: (offset, oldData) => {
+            return dispatch(fetchDataList(constants.endpoinds.LIST_POKEMON, offset, oldData))
         }
     }
 }

@@ -1,13 +1,19 @@
 export default {
     environment: {
-        URL_SERVICES:'http://pokeapi.co/api/v2/'
+        URL_SERVICES:'http://pokeapi.co/api/v2/',
+        PAGINATION: {
+            limit: 20,
+            offset: 0
+        }
     },
     endpoinds: {
-        list_pokemon: 'pokemon/?limit=120&offset=0'
+        LIST_POKEMON: (offset) => `pokemon/?limit=40&offset=${offset}`
     },
     action: {
         GET_LIST_POKEMON: 'GET_LIST_POKEMON',
         GET_LIST_SUCCESS_POKEMON: 'GET_LIST_SUCCESS_POKEMON',
         GET_LIST_FAIL_POKEMON: 'GET_LIST_FAIL_POKEMON',
+        GET_NEXT_OFFSET: 'GET_NEXT_OFFSET',
+        UPDATE_LIST_SUCCESS_POKEMON: 'UPDATE_LIST_SUCCESS_POKEMON',
     },
 }
