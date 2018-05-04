@@ -2,11 +2,11 @@ import constants from '../commons/constants'
 import {fetchDataServices} from '../api'
 
 export const getData = () => {
-    return {type: constants.action.GET_LIST_POKEMON}
+    return {type: constants.action.GET_LIST_POKEMON, isRefreshing: true, data: []}
 }
 
 export const getDataSuccess = (data) => {
-    return {type: constants.action.GET_LIST_SUCCESS_POKEMON, data}
+    return {type: constants.action.GET_LIST_SUCCESS_POKEMON, data, isRefreshing: false}
 }
 
 export const getDataFail = (data) => {

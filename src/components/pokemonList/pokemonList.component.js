@@ -15,17 +15,37 @@ class PokemonListComponent extends Component {
         return <Text>{item.name} - {index}</Text>
     }
 
+    _handleRefresh() {
+        //debugger
+        this.children.props.extraData.fetchData()
+        //props.fetchData()
+    }
+
+    _handleLoadMore() {
+        debugger
+    }
+
     render() {
         let {pokemons} = this.props
+        console.log('------------------------')
+        console.log(pokemons.isRefreshing)
+        console.log('------------------------')
         return(<FlatList
             data= {pokemons.data}
-            renderItem={this._renderItem}
+            extraData={this.props}
+            renderItem= {this._renderItem}
+            refreshing= {pokemons.isRefreshing}
+          
+            onRefresh= {this._handleRefresh}
+           
         ></FlatList>)
     }
 }
+/*
 
-
-const mapStateToProps = (state) => {    
+            onEndReached={this._handleLoadMore}
+*/
+const mapStateToProps = (state) => {   
     return {
         pokemons: state.pokemons
     }
