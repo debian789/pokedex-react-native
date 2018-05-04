@@ -4,3 +4,5 @@ export const fetchDataServices = (url) => {
         return Promise.all([response, response.json()])
     })
 }
+
+

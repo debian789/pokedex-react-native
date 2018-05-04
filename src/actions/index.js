@@ -36,10 +36,8 @@ export const fetchDataList= (url, offset, oldData) => {
             } else {
                 dispatch(getDataSuccess(json.results))
             }
+            
         })
         .catch((error) => console.log(error))
     }
 }
-
-
-

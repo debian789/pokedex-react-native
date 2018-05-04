@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import {View, Text, FlatList} from 'react-native'
+import {View, Text, FlatList, Image} from 'react-native'
 import {fetchDataList, updataDataSuccess} from '../../actions'
 import {connect} from 'react-redux'
 import constants from '../../commons/constants'
-
+import PokemonListStyle from './pokemonList.style'
 
 class PokemonListComponent extends Component {
 
@@ -12,7 +12,22 @@ class PokemonListComponent extends Component {
     }
 
     _renderItem({item, index})  {
-        return <Text>{item.name} - {index}</Text>
+        const randomColorA = Math.floor(Math.random() * (240 - 180 +1) + 180)            
+        const randomColorB = Math.floor(Math.random() * (220 - 160 +1) + 160)            
+        const randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160)            
+
+        return <View style={[PokemonListStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
+            <View style={PokemonListStyle.head}></View>   
+            <View style={PokemonListStyle.body}>
+                <Image style={PokemonListStyle.itemImage} 
+                    source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}}
+                />
+            </View>  
+            <View style={PokemonListStyle.bottom}>
+                <Text style={PokemonListStyle.name}>{item.name.toLowerCase()}</Text>
+                <Text style={PokemonListStyle.count}>{index + 1}</Text>
+            </View>
+        </View>
     }
 
     _handleRefresh() {
@@ -20,18 +35,15 @@ class PokemonListComponent extends Component {
     }
 
     _handleLoadMore() {
-        // data old 
-        // 
         this.props.fetchData(this.props.pokemons.offset, this.props.pokemons.data)
     }
 
     render() {
         let {pokemons} = this.props
-        console.log('------------------------')
-        console.log(pokemons.isRefreshing)
-        console.log('------------------------')
         return(<FlatList
+            style={PokemonListStyle.container}
             data= {pokemons.data}
+            numColumns={3}
             extraData={this.props}
             renderItem= {this._renderItem}
             refreshing= {pokemons.isRefreshing}
@@ -54,6 +66,5 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonListComponent)
