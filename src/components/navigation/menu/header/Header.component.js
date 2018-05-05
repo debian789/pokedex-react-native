@@ -7,9 +7,11 @@ import {
     TextInput
 } from 'react-native'
 import HeaderStyle from './Header.style'
+import {connect} from 'react-redux'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import {setContextNavigation} from '../../../../actions/navegation.action'
 
-export default class HeaderComponent extends Component {
+class HeaderComponent extends Component {
     constructor () {
         super()
         debugger
@@ -70,6 +72,17 @@ export default class HeaderComponent extends Component {
     }
 }
 
+
+
+const mapStateToProps = (state) => {
+    debugger
+    return {
+        navegation: state.navegation
+    }
+}
+
+
+export default connect(mapStateToProps)(HeaderComponent)
 
 //HeaderComponent.propTypes = {
 //    navigation: PropTypes.object

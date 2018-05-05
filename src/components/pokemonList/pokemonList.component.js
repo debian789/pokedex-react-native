@@ -54,7 +54,6 @@ class PokemonListComponent extends Component {
 }
 
 const mapStateToProps = (state) => {   
-    debugger
     return {
         pokemons: state.pokemons
     }

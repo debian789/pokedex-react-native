@@ -1,10 +1,11 @@
 import {combineReducers} from 'redux'
 import {NavigationActions} from 'react-navigation'
-import {AppNavigator} from '../components/navigation/navigation.component'
+import Router from '../components/navigation/menu/router'
+import constants from '../commons/constants'
 
-const firstAction = AppNavigator.router.getActionForPathAndParams('Main');
-const tempNavState = AppNavigator.router.getStateForAction(firstAction);
-const initialNavState = AppNavigator.router.getStateForAction(
+const firstAction = Router.router.getActionForPathAndParams('Main');
+const tempNavState = Router.router.getStateForAction(firstAction);
+const initialNavState = Router.router.getStateForAction(
     tempNavState
 )
 
@@ -14,8 +15,14 @@ export default NavigationReducers = (state=initialNavState, action) => {
     switch(action.type) {
         case 'Login':
             break;
+        case constants.action.navegation.GET_CONTEXT_NAVIGATION:
+            nextState = {
+                ...state,
+                navegation: action.navegation
+            }
+
         default:
-            nextState = AppNavigator.router.getStateForAction(action, state);
+            nextState = Router.router.getStateForAction(action, state);
             break;
     }
 

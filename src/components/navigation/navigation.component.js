@@ -1,28 +1,8 @@
 import React,{Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {StackNavigator} from 'react-navigation'
 import {addListener} from '../../utils/redux'
-import PokemonListComponent  from '../pokemonList/pokemonList.component'
-
-import HeaderComponent from './menu/header/Header.component'
-
-
-
-export const AppNavigator = StackNavigator({
-    Main: {screen: PokemonListComponent},
-    DetailPokemon: {screen: PokemonListComponent}
-}, {
-    headerMode: 'screen',
-    initialRouteName: 'Main',
-    //navigationOptions: ({navigation}) => ({
-    //    header: <Header navigation={navigation}/>
-    //})
-    navigationOptions: (navigation) => {
-      //  debugger
-        return {header: <HeaderComponent navigation={navigation}></HeaderComponent>}
-    }
-})
+import Router from './menu/router'
 
 class AppWithNavigationState extends Component {
     static propTypes = {
@@ -33,8 +13,8 @@ class AppWithNavigationState extends Component {
     render() {
         const {dispatch, navigation} = this.props
         return (
-            <AppNavigator 
-                navigation={{
+            <Router 
+                navigation2={{
                     dispatch,
                     state: navigation,
                     addListener
