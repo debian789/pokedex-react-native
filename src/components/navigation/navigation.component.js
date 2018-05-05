@@ -14,7 +14,7 @@ class AppWithNavigationState extends Component {
         const {dispatch, navigation} = this.props
         return (
             <Router 
-                navigation2={{
+                navigation={{
                     dispatch,
                     state: navigation,
                     addListener

@@ -20,10 +20,8 @@ export default NavigationReducers = (state=initialNavState, action) => {
                 ...state,
                 navegation: action.navegation
             }
-
         default:
             nextState = Router.router.getStateForAction(action, state);
-            break;
     }
 
     return nextState || state

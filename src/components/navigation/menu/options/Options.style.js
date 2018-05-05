@@ -1,4 +1,4 @@
-import theme from '../../../assets/theme';
+import theme from '../../../../commons/assets/theme';
 
 export default {
     container: {

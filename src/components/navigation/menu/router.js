@@ -1,4 +1,5 @@
 import PokemonListComponent  from '../../pokemonList/pokemonList.component'
+import PokemonDetailComponent  from '../../pokemonDetail/pokemonDetail.component'
 import {StackNavigator} from 'react-navigation'
 import {setContextNavigation} from '../../../actions/navegation.action'
 import HeaderComponent from './header/Header.component'
@@ -7,7 +8,7 @@ import React from 'react'
 
 export default  Router = StackNavigator({
     Main: {screen: PokemonListComponent},
-    DetailPokemon: {screen: PokemonListComponent}
+    DetailPokemon: {screen: PokemonDetailComponent}
 }, {
     headerMode: 'screen',
     initialRouteName: 'Main',

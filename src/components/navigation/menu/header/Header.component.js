@@ -14,7 +14,7 @@ import {setContextNavigation} from '../../../../actions/navegation.action'
 class HeaderComponent extends Component {
     constructor () {
         super()
-        debugger
+        
     }
 
     render () {
@@ -27,7 +27,9 @@ class HeaderComponent extends Component {
                               //debugger
                               //if (this.props.navigation.navigation.state.index === 0) {
                              //  debugger
+                             //debugger
                                   this.props.navigation.navigation.navigate('DrawerOpen')
+                               //   this.props.navigation.navigate('DrawerOpen')
                               //} else {
                               //    this.props.navigation.navigation.navigate('DrawerClose')
                               //}
@@ -41,10 +43,10 @@ class HeaderComponent extends Component {
                              //debugger
                               // if(this.props.navigation.state.index === 0){
 
-                              if (this.props.navigation.navigation.state.routeName === 'DealsMap') {
-                                  this.props.navigation.navigation.navigate('DealsList')
+                              if (this.props.navigation.navigation.state.routeName === 'Main') {
+                                  this.props.navigation.navigation.navigate('DetailPokemon')
                              } else {
-                                  this.props.navigation.navigation.navigate('DealsMap')
+                                  this.props.navigation.navigation.navigate('Main')
 
                               }
 
@@ -75,9 +77,8 @@ class HeaderComponent extends Component {
 
 
 const mapStateToProps = (state) => {
-    debugger
     return {
-        navegation: state.navegation
+        navigation2: state.navegation
     }
 }
 

@@ -38,7 +38,7 @@ class OptionsComponent extends Component {
                          </View>
 
                          <View style={styles.navSectionStyle} key="d">
-                             <Text style={styles.navItemStyle} onPress={this.navigateToScreen('DealsMap')}>
+                             <Text style={styles.navItemStyle} onPress={this.navigateToScreen('DetailPokemon')}>
                                  Configuración
                              </Text>
                          </View>

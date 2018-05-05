@@ -5,6 +5,7 @@ import configureStore from './configureStore'
 // import PokemonListComponent from './components/pokemonList/pokemonList.component'
 
 import AppWithNavigationState from './components/navigation/navigation.component'
+import MainNavigationComponent from './components/navigation/mainNavigation.component'
 
 
 let store = configureStore()
@@ -12,10 +13,11 @@ let store = configureStore()
 const App = () => {
   return(<Provider store={store}>
     <View style={{flex:1}}>
-      <AppWithNavigationState/>
+    <MainNavigationComponent/>
     </View>
   </Provider>)
 }
 
+// <AppWithNavigationState/>
 //<PokemonListComponent></PokemonListComponent>
 export default App
