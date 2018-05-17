@@ -1,70 +1,57 @@
-import React, {Component} from 'react'
-import {View, Text, FlatList, Image} from 'react-native'
-import {fetchDataList, updataDataSuccess} from '../../actions'
-import {connect} from 'react-redux'
-import constants from '../../commons/constants'
+import React, {Component} from 'react';
+import {Text, View, Dimensions, StyleSheet, ScrollView} from 'react-native';
+import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
+import type, {Route, NavigationState} from 'react-native-tab-view/types';
+import {selected_tab} from '../../actions/pokemonList.action'
+import {connect} from 'react-redux';
+import PokemonCaughtComponent from './caught/pokemonCaught.component'
+import PokemonAllComponent from './all/pokemonAll.component'
 import PokemonListStyle from './pokemonList.style'
 
-class PokemonListComponent extends Component {
+const initialLayout = {
+    height: 0,
+    width: Dimensions
+        .get('window')
+        .width
+}
 
-    componentWillMount() {
-        this.props.fetchData(constants.environment.PAGINATION.offset)
+class TapBarComponent extends Component {
+    _handleIndexChange = index => {
+        debugger
+        // this.props.pokemonList.index = index
+        this
+            .props
+            .selected_tab(index)
     }
 
-    _renderItem({item, index})  {
-        const randomColorA = Math.floor(Math.random() * (240 - 180 +1) + 180)            
-        const randomColorB = Math.floor(Math.random() * (220 - 160 +1) + 160)            
-        const randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160)            
+    _renderHeader = props => (<TabBar {...props}/>)
 
-        return <View style={[PokemonListStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
-            <View style={PokemonListStyle.head}></View>   
-            <View style={PokemonListStyle.body}>
-                <Image style={PokemonListStyle.itemImage} 
-                    source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}}
-                />
-            </View>  
-            <View style={PokemonListStyle.bottom}>
-                <Text style={PokemonListStyle.name}>{item.name.toLowerCase()}</Text>
-                <Text style={PokemonListStyle.count}>{index + 1}</Text>
-            </View>
-        </View>
-    }
-
-    _handleRefresh() {
-        this.children.props.extraData.fetchData(constants.environment.PAGINATION.offset)
-    }
-
-    _handleLoadMore() {
-        this.props.fetchData(this.props.pokemons.offset, this.props.pokemons.data)
-    }
+    _renderScene = SceneMap({all: PokemonAllComponent, caught: PokemonCaughtComponent})
 
     render() {
-        let {pokemons} = this.props
-        return(<FlatList
-            style={PokemonListStyle.container}
-            data= {pokemons.data}
-            numColumns={3}
-            extraData={this.props}
-            renderItem= {this._renderItem}
-            refreshing= {pokemons.isRefreshing}
-            onEndReached={() => {return this._handleLoadMore.bind(this)()}}
-            onRefresh= {this._handleRefresh}           
-        ></FlatList>)
+        return (<TabViewAnimated
+            style={[PokemonListStyle.container, this.props.style]}
+            navigationState={this.props.pokemonList}
+            renderScene={this._renderScene}
+            renderHeader={this._renderHeader}
+            onIndexChange={this._handleIndexChange.bind(this)}
+            initialLayout={initialLayout}
+            useNativeDriver/>)
     }
 }
 
-const mapStateToProps = (state) => {   
-    return {
-        pokemons: state.pokemons
-    }
+const mapStateToProps = state => {
+    return {pokemonList: state.pokemonList}
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchData: (offset, oldData) => {
-            return dispatch(fetchDataList(constants.endpoinds.LIST_POKEMON, offset, oldData))
+        selected_tab : (index) => {
+            return dispatch(selected_tab(index))
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PokemonListComponent)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TapBarComponent)

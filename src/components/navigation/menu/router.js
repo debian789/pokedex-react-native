@@ -17,7 +17,6 @@ export default  Router = StackNavigator({
     //})
     navigationOptions: (navigation) => {
       //  debugger
-      debugger
         return {header: <HeaderComponent navigation={navigation}></HeaderComponent>}
     }
 })

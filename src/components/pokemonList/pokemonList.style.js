@@ -1,40 +1,21 @@
+
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: 'white'
-    },
-    item: {        
-        borderWidth: 0,
-        height: 120,
-        width:'33%'
-    },
-    head: {
         flex: 1
     },
-    body: {
-        flex: 3,
-        alignItems: 'center',
+    tabbar: {
+        backgroundColor: '#3f51b5'
     },
-    itemImage: {
-       width: 50,
-        height: 50
+    tab: {
+        width: 120
     },
-    bottom: {
-        flex: 1,
-        flexDirection: 'row',
+    indicator: {
+        backgroundColor: '#ffeb3b'
     },
-    count: {
-        flex: 1,
-        color: 'white',
-        paddingRight: 5,
-        textAlign: 'right',
-    },
-    name: {
-        flex: 3,
-        color: 'white',
-        textAlign: 'center',
-        alignContent: 'center'
+    labe: {
+        color: '#fff',
+        fontWeight: '400'
     }
 })

@@ -42,7 +42,6 @@ class MainNavigatorComponent extends Component {
 
 
 const mapStateToProps = state => {
-    debugger
     return {
         navigation: state.navigation
     }

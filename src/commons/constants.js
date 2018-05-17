@@ -17,6 +17,10 @@ export default {
         UPDATE_LIST_SUCCESS_POKEMON: 'UPDATE_LIST_SUCCESS_POKEMON',        
         navegation: {
             GET_CONTEXT_NAVIGATION:'GET_CONTEXT_NAVIGATION'
+        },
+        tab_bar: {
+            SELECT_ALL_TAB: 'SELECT_ALL_TAB',
+            SELECT_CAUGHT_TAB: 'SELECT_CAUGHT_TAB'
         }
     },
 }
