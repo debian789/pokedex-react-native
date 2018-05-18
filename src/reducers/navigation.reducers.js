@@ -20,6 +20,21 @@ export default NavigationReducers = (state=initialNavState, action) => {
                 ...state,
                 navegation: action.navegation
             }
+            break
+        case constants.action.navegation.DETAIL_POKEMON:
+           // nextState = {
+           //     ...state,
+           //     navegation: action.navegation
+           // }
+
+
+            nextState = AppNavigator.router.getStateForAction(
+                NavigationActions.navigate({ routeName: 'DetailPokemon' }),
+                state
+            );
+            break;
+
+
         default:
             nextState = AppNavigator.router.getStateForAction(action, state);
     }

@@ -5,33 +5,31 @@ import {connect} from 'react-redux'
 import constants from '../../../commons/constants'
 import PokemonAllStyle from './pokemonAll.style'
 
+import {NavigationActions} from 'react-navigation'
+
 class PokemonAllComponent extends Component {
 
     componentWillMount() {
         this.props.fetchData(constants.environment.PAGINATION.offset)
     }
 
-    _navigationDetail() {
+    _navigationDetail(item, index) {
         debugger
-        this.props.navigation.navigate('DetailPokemon', { /* params go here */ })
+        this.props.detailPokemon()
+        //                detailPokemon()
+        //this.props.navigation.navigate('DetailPokemon', { /* params go here */ })
     }
 
     _renderItem({item, index})  {
         const randomColorA = Math.floor(Math.random() * (240 - 180 +1) + 180)            
         const randomColorB = Math.floor(Math.random() * (220 - 160 +1) + 160)            
         const randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160)    
-        debugger
         return <View style={[PokemonAllStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
             <View style={PokemonAllStyle.head}></View>   
     
             <View style={PokemonAllStyle.body}>
                 <TouchableHighlight
-                    onPress={() => {
-
-
-
-                        debugger
-                    }}
+                    onPress={this._navigationDetail.bind(this, item, index)}
                 >
                     <Image style={PokemonAllStyle.itemImage} 
                         source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}}
@@ -83,7 +81,9 @@ const mapDispatchToProps = dispatch => {
         },
         getContextNavigation: () => {
             return dispatch(getContextNavigation())
-        }
+        },
+        detailPokemon: () =>
+            dispatch(NavigationActions.navigate({ routeName: 'DetailPokemon' })),
     }
 }
 

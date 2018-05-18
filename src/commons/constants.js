@@ -16,7 +16,9 @@ export default {
         GET_NEXT_OFFSET: 'GET_NEXT_OFFSET',
         UPDATE_LIST_SUCCESS_POKEMON: 'UPDATE_LIST_SUCCESS_POKEMON',        
         navegation: {
-            GET_CONTEXT_NAVIGATION:'GET_CONTEXT_NAVIGATION'
+            GET_CONTEXT_NAVIGATION:'GET_CONTEXT_NAVIGATION',
+            DETAIL_POKEMON:'DETAIL_POKEMON',
+
         },
         tab_bar: {
             SELECT_ALL_TAB: 'SELECT_ALL_TAB',
