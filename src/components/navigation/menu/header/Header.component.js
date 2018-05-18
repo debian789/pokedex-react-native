@@ -17,6 +17,9 @@ class HeaderComponent extends Component {
         super()        
     }
 
+
+
+
     render () {
         return (
              <View style={HeaderStyle.container}>
@@ -39,7 +42,7 @@ class HeaderComponent extends Component {
                               //      this.props.navigation.navigate('DrawerClose');
                               // }
                           }}>
-                         <Text><Icon name="search" size={30} style={HeaderStyle.searchIcon}/></Text>
+                         <Text><Icon name="search" size={25} style={HeaderStyle.searchIcon}/></Text>
                      </TouchableHighlight>
                  </View>
              </View>

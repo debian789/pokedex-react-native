@@ -23,7 +23,6 @@ class MainNavigatorComponent extends Component {
         navigation: PropTypes.object.isRequired
     }
 
-
     render() {
         const {dispatch, navigation} = this.props
         return (
@@ -37,9 +36,6 @@ class MainNavigatorComponent extends Component {
         )
     }
 }
-
-
-
 
 const mapStateToProps = state => {
     return {

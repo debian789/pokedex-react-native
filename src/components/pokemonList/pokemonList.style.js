@@ -1,21 +1,36 @@
-
+import Theme from '../../commons/theme';
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        marginBottom: 0,
+        backgroundColor: 'green'
     },
     tabbar: {
-        backgroundColor: '#3f51b5'
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: '#fafafa',
+    },
+    tabbar2: {
+        backgroundColor: Theme.colors.trowelA.b
+    },
+    selected: {
+        backgroundColor: Theme.colors.trowelB.a
     },
     tab: {
-        width: 120
+        flex: 1,
+        alignItems: 'center',
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderTopColor: 'rgba(0, 0, 0, .2)',
+        paddingTop: 4.5,
     },
     indicator: {
-        backgroundColor: '#ffeb3b'
+        backgroundColor:  'red'// '#ffeb3b'
     },
-    labe: {
-        color: '#fff',
-        fontWeight: '400'
+    label: {
+        color: Theme.colors.trowelA.a,
+        fontWeight: '400',
+        backgroundColor: 'transparent',
     }
 })

@@ -17,23 +17,27 @@ const initialLayout = {
 
 class TapBarComponent extends Component {
     _handleIndexChange = index => {
-        debugger
-        // this.props.pokemonList.index = index
         this
             .props
             .selected_tab(index)
     }
 
-    _renderHeader = props => (<TabBar {...props}/>)
+    _renderFooter = props => (<TabBar 
+        labelStyle = {PokemonListStyle.label}
+        style={PokemonListStyle.selected}
+
+        pressColor="green"
+       // tabStyle = {PokemonListStyle.selected}
+        {...props}/>)
 
     _renderScene = SceneMap({all: PokemonAllComponent, caught: PokemonCaughtComponent})
 
     render() {
         return (<TabViewAnimated
-            style={[PokemonListStyle.container, this.props.style]}
+            style={PokemonListStyle.container}
             navigationState={this.props.pokemonList}
             renderScene={this._renderScene}
-            renderHeader={this._renderHeader}
+            renderFooter={this._renderFooter}
             onIndexChange={this._handleIndexChange.bind(this)}
             initialLayout={initialLayout}
             useNativeDriver/>)
@@ -51,7 +55,5 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(TapBarComponent)

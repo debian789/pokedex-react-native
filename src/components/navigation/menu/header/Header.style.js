@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native'
-import Theme from '../../../../commons/assets/theme'
+import Theme from '../../../../commons/theme'
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: Theme.colors.trowelA.c,
+        backgroundColor: Theme.colors.trowelA.a,
     },
     containerA: {
         paddingTop: 7,
@@ -19,7 +19,7 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     menuIcon: {
-        color: 'white',
+        color: Theme.colors.trowelB.a,
 
     },
     logo: {
@@ -29,14 +29,15 @@ export default StyleSheet.create({
     },
     logoText: {
         textAlign: 'center',
-        fontSize: 25
+        fontSize: 22,
+        color: Theme.colors.trowelB.a
     },
     navegation: {
         flex: 1,
         alignItems: 'center'
     },
     navegationIcon: {
-        color: 'white'
+        color:  Theme.colors.trowelB.a
     },
     containerB: {
         paddingTop: 5,
@@ -46,7 +47,7 @@ export default StyleSheet.create({
 
     },
     searchContainer: {
-        backgroundColor: 'white',
+        backgroundColor:  Theme.colors.trowelB.a,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-start',
@@ -60,11 +61,11 @@ export default StyleSheet.create({
         flex: 6
     },
     searchIcon: {
-        color: '#ccc'
+        color:  Theme.colors.trowelB.a
     },
     searchTextInput: {
         height: 40,
-        borderColor: 'white',
+        borderColor: Theme.colors.trowelB.a,
         borderWidth: 0
     }
 })
