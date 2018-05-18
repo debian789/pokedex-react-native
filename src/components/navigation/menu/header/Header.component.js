@@ -9,16 +9,13 @@ import {
 import HeaderStyle from './Header.style'
 import {connect} from 'react-redux'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import {setContextNavigation} from '../../../../actions/navegation.action'
+// import {setContextNavigation} from '../../../../actions/navegation.action'
 import {strings} from '../../../../../locales/i18n'
 
 class HeaderComponent extends Component {
     constructor () {
         super()        
     }
-
-
-
 
     render () {
         return (
@@ -28,7 +25,6 @@ class HeaderComponent extends Component {
                      <TouchableHighlight
                           style={HeaderStyle.navegation}
                           onPress={() => {
-                             //debugger
                               // if(this.props.navigation.state.index === 0){
 
                               if (this.props.navigation.navigation.state.routeName === 'Main') {
@@ -54,7 +50,7 @@ class HeaderComponent extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        navigation2: state.navegation
+        navigation2: state.nav
     }
 }
 

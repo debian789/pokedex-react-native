@@ -5,6 +5,6 @@ import NavigationReducers from './navigation.reducers'
 
 export default combineReducers({
     pokemons: PokemonReducers,
-    navigation: NavigationReducers,
+    nav: NavigationReducers,
     pokemonList: PokemonListReducers
 })

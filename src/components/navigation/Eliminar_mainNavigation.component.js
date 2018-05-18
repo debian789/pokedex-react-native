@@ -6,6 +6,44 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {addListener} from '../../utils/redux'
 
+
+
+export const AppNavigator = StackNavigator({
+    list: { screen: LoginScreen },
+    detail: { screen: MainScreen }
+  });
+
+
+  
+  class MainNavigatorComponent extends React.Component {
+    static propTypes = {
+      dispatch: PropTypes.func.isRequired,
+      nav: PropTypes.object.isRequired,
+    };
+  
+    render() {
+      const { dispatch, nav } = this.props;
+      return (
+        <AppNavigator
+          navigation={{
+            dispatch,
+            state: nav,
+            addListener,
+          }}
+        />
+      );
+    }
+  }
+  
+  const mapStateToProps = state => ({
+    nav: state.nav,
+  });
+  
+  export default connect(mapStateToProps)(MainNavigatorComponent);
+
+
+
+/*
 export default Navigator = DrawerNavigator({
          Router: {
              screen: Router
@@ -17,6 +55,9 @@ export default Navigator = DrawerNavigator({
      }
 )
 
+*/
+
+/*
 class MainNavigatorComponent extends Component {
     static propTypes = {
         dispatch: PropTypes.func.isRequired,
@@ -43,4 +84,6 @@ const mapStateToProps = state => {
     }
 }
 
-//export default connect(mapStateToProps)(MainNavigatorComponent)
+*/
+
+// export default connect(mapStateToProps)(MainNavigatorComponent)
