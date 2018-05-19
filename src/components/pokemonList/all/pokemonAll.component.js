@@ -4,7 +4,6 @@ import {fetchDataList, updataDataSuccess} from '../../../actions'
 import {connect} from 'react-redux'
 import constants from '../../../commons/constants'
 import PokemonAllStyle from './pokemonAll.style'
-
 import {NavigationActions} from 'react-navigation'
 
 class PokemonAllComponent extends Component {
@@ -15,8 +14,6 @@ class PokemonAllComponent extends Component {
 
     _navigationDetail(item, index) {
         this.props.detailPokemon(item.url)
-        //                detailPokemon()
-        //this.props.navigation.navigate('DetailPokemon', { /* params go here */ })
     }
 
     _renderItem({item, index})  {
@@ -25,7 +22,6 @@ class PokemonAllComponent extends Component {
         const randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160)    
         return <View style={[PokemonAllStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
             <View style={PokemonAllStyle.head}></View>   
-    
             <View style={PokemonAllStyle.body}>
                 <TouchableHighlight
                     onPress={this._navigationDetail.bind(this, item, index)}
@@ -35,7 +31,6 @@ class PokemonAllComponent extends Component {
                     />
                 </TouchableHighlight>
             </View>  
-            
             <View style={PokemonAllStyle.bottom}>
                 <Text style={PokemonAllStyle.name}>{item.name.toLowerCase()}</Text>
                 <Text style={PokemonAllStyle.count}>{index + 1}</Text>

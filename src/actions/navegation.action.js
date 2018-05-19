@@ -9,5 +9,4 @@ export const setContextNavigation = (navegation) => {
     return (dispatch) => {
         dispatch(getContextNavigation(navegation))
     }
-
 }

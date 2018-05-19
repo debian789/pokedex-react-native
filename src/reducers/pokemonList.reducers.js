@@ -19,7 +19,6 @@ export default(state = initialState, action) => {
                 ...state,
                 index: action.index
             }
-          // return action.index
         case constants.action.tab_bar.SELECT_CAUGHT_TAB:
             return {
                 ...state,

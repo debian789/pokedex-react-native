@@ -29,14 +29,12 @@ export const fetchDataList= (url, offset, oldData) => {
         dispatch(getNextOffset(offset))
     
         fetchDataServices(`${constants.environment.URL_SERVICES}${url(offset)}`)
-        .then(([response, json]) => {
-            
+        .then(([response, json]) => {            
             if (oldData && oldData.length > 0) {
                 dispatch(updataDataSuccess(oldData, json.results))
             } else {
                 dispatch(getDataSuccess(json.results))
-            }
-            
+            }            
         })
         .catch((error) => console.log(error))
     }

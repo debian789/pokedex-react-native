@@ -4,11 +4,7 @@ import {NavigationActions} from 'react-navigation'
 import {connect} from 'react-redux'
 import {fetchDataList} from '../../actions/pokemonDetail.action'
 
-
-
 class PokemonDetailComponent extends Component {
-
-
     componentWillMount() {
         const url = this.props.navigation.getParam('url');
         this.props.fetchData(url)

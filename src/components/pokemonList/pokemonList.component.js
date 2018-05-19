@@ -27,7 +27,6 @@ class TapBarComponent extends Component {
         style={PokemonListStyle.selected}
 
         pressColor="green"
-       // tabStyle = {PokemonListStyle.selected}
         {...props}/>)
 
     _renderScene = SceneMap({all: PokemonAllComponent, caught: PokemonCaughtComponent})
