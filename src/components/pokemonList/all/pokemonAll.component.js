@@ -14,8 +14,7 @@ class PokemonAllComponent extends Component {
     }
 
     _navigationDetail(item, index) {
-        debugger
-        this.props.detailPokemon()
+        this.props.detailPokemon(item.url)
         //                detailPokemon()
         //this.props.navigation.navigate('DetailPokemon', { /* params go here */ })
     }
@@ -82,8 +81,8 @@ const mapDispatchToProps = dispatch => {
         getContextNavigation: () => {
             return dispatch(getContextNavigation())
         },
-        detailPokemon: () =>
-            dispatch(NavigationActions.navigate({ routeName: 'DetailPokemon' })),
+        detailPokemon: (url) =>
+            dispatch(NavigationActions.navigate({ routeName: 'DetailPokemon', params: {url} })),
     }
 }
 
