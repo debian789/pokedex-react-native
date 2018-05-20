@@ -25,7 +25,10 @@ export default {
         },
         tab_bar: {
             SELECT_ALL_TAB: 'SELECT_ALL_TAB',
-            SELECT_CAUGHT_TAB: 'SELECT_CAUGHT_TAB'
+            SELECT_CAUGHT_TAB: 'SELECT_CAUGHT_TAB',
+            SELECT_STATS_TAB: 'SELECT_STATS_TAB',
+            SELECT_MOVES_TAB: 'SELECT_MOVES_TAB',
+            SELECT_LOCATION_TAB: 'SELECT_LOCATION_TAB'
         }
     },
 }
