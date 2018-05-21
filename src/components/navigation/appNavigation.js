@@ -1,13 +1,37 @@
 import PokemonListComponent  from '../pokemonList/pokemonList.component'
 import PokemonDetailComponent  from '../pokemonDetail/pokemonDetail.component'
-// import PokemonDetailNavegation  from '../pokemonDetail/pokemonDetailNavegation'
-import {StackNavigator} from 'react-navigation'
+import pokemonAllComponent from '../pokemonList/all/pokemonAll.component'
+import pokemonCaughtComponent from '../pokemonList/caught/pokemonCaught.component'
+import {StackNavigator, TabNavigator, TabBarBottom,} from 'react-navigation'
 import {setContextNavigation} from '../../actions/navegation.action'
 import HeaderComponent from './menu/header/Header.component'
-//import {connect} from 'react-redux'
 import React from 'react'
 import PropTypes from 'prop-types'
-// import {addListener} from '../../utils/redux'
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+
+const tabBarIcon = (nameInactive, nameActive) => ({ tintColor, focused }) => (
+  <Icon name={focused ? nameActive : nameInactive} size={26} color={focused ? tintColor : Colors.tabInactive} />
+);
+
+
+
+const tab =  TabNavigator({
+  All: { screen: pokemonAllComponent,
+    navigationOptions: {
+      tabBarLabel: "Statistics",
+      tabBarIcon: tabBarIcon("ios-stats-outline", "ios-stats")
+    }
+   } ,
+  Caught: { screen: pokemonCaughtComponent } 
+},{
+tabBarPosition: 'bottom',
+
+tabBarOptions: {
+  activeTintColor:'white'
+}
+
+});
 
 
 const pokemonDetailNavegation = StackNavigator({
@@ -15,10 +39,11 @@ const pokemonDetailNavegation = StackNavigator({
 }, {
     headerMode: 'screen',
     initialRouteName: 'DetailPokemon',
-    navigationOptions: {
-      headerStyle: {backgroundColor: 'red'},
-      title: 'You are not logged in'
-    }  
+    showBack: true
+    //navigationOptions: {
+    //  headerStyle: {backgroundColor: 'red'},
+    //  title: 'You are not logged in'
+    //}  
 })
 
 const Main = StackNavigator({
@@ -38,7 +63,7 @@ const Main = StackNavigator({
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
-  Primary: { screen: Main },
+  Primary: { screen: tab },
   pokemonDetailNavegation: {screen: pokemonDetailNavegation},
 
 }, {

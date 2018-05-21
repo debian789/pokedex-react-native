@@ -19,7 +19,9 @@ const initialLayout = {
 class PokemonDetailComponent extends Component {
     componentWillMount() {
         const url = this.props.navigation.getParam('url');
+       // this.props.navigation.setOptions({title:'hola ? '});
         this.props.fetchData(url)
+
     }
 
     _handleIndexChange = index => {
