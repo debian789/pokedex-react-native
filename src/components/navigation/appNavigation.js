@@ -1,7 +1,13 @@
 import PokemonListComponent  from '../pokemonList/pokemonList.component'
-import PokemonDetailComponent  from '../pokemonDetail/pokemonDetail.component'
+// import PokemonDetailComponent  from '../pokemonDetail/pokemonDetail.component'
+
 import pokemonAllComponent from '../pokemonList/all/pokemonAll.component'
 import pokemonCaughtComponent from '../pokemonList/caught/pokemonCaught.component'
+
+import PokemonDetailStatsComponent from '../pokemonDetail/pokemonDetailStats/pokemonDetailStats.component'
+import PokemonDetailMovesComponent from '../pokemonDetail/pokemonDetailMoves/pokemonDetailMoves.component'
+import PokemonDetailLocationComponent from '../pokemonDetail/pokemonDetailLocation/pokemonDetailLocation.component'
+
 import {StackNavigator, TabNavigator, TabBarBottom,} from 'react-navigation'
 import {setContextNavigation} from '../../actions/navegation.action'
 import HeaderComponent from './menu/header/Header.component'
@@ -9,47 +15,72 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-
-const tabBarIcon = (nameInactive, nameActive) => ({ tintColor, focused }) => (
-  <Icon name={focused ? nameActive : nameInactive} size={26} color={focused ? tintColor : Colors.tabInactive} />
-);
-
-
-
-const tab =  TabNavigator({
+// list the pokemon tab
+const tabNavigationPokemonList =  TabNavigator({
   All: { screen: pokemonAllComponent,
     navigationOptions: {
-      tabBarLabel: "Statistics",
-      tabBarIcon: tabBarIcon("ios-stats-outline", "ios-stats")
+      tabBarLabel: "All",
     }
    } ,
   Caught: { screen: pokemonCaughtComponent } 
 },{
-tabBarPosition: 'bottom',
+  tabBarPosition: 'bottom',
+  tabBarOptions: {
+    upperCaseLabel: false,
+    style: {
+      backgroundColor: 'white'
+    },
+    labelStyle : {
+      color: 'red'
+    }
+  }
+});
 
-tabBarOptions: {
-  activeTintColor:'white'
-}
 
+// Detail the pokemon tab
+const tabNavigationPokemonDetail =  TabNavigator({
+  PokemonDetailStats: { 
+    screen: PokemonDetailStatsComponent,
+    navigationOptions: {
+      tabBarLabel: "Stats",
+    }
+  },
+  PokemonDetailLocation: { 
+    screen: PokemonDetailLocationComponent,
+    navigationOptions: {
+      tabBarLabel: "Location",
+    }
+  },
+  PokemonDetailMoves: { 
+    screen: PokemonDetailMovesComponent,
+    navigationOptions: {
+      tabBarLabel: "Moves",
+    }
+  } 
+},{
+  tabBarPosition: 'bottom',
+  tabBarOptions: {
+    upperCaseLabel: false,
+    style: {
+      backgroundColor: 'white'
+    },
+    labelStyle : {
+      color: 'red'
+    }
+  }
 });
 
 
 const pokemonDetailNavegation = StackNavigator({
-  DetailPokemon: {screen: PokemonDetailComponent},
+  DetailPokemon: {screen: tabNavigationPokemonDetail},
 }, {
     headerMode: 'screen',
     initialRouteName: 'DetailPokemon',
     showBack: true
-    //navigationOptions: {
-    //  headerStyle: {backgroundColor: 'red'},
-    //  title: 'You are not logged in'
-    //}  
 })
 
 const Main = StackNavigator({
-    Main: {screen: PokemonListComponent},
-   // DetailPokemon: {screen: PokemonDetailComponent},
-
+    Main: {screen: tabNavigationPokemonList},
   }, {
     headerMode: 'screen',
     initialRouteName: 'Main',
@@ -58,12 +89,9 @@ const Main = StackNavigator({
     }
 })
 
-
-
-
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
-  Primary: { screen: tab },
+  Primary: { screen: Main },
   pokemonDetailNavegation: {screen: pokemonDetailNavegation},
 
 }, {
@@ -74,4 +102,3 @@ const PrimaryNav = StackNavigator({
 })
 
 export default PrimaryNav
-

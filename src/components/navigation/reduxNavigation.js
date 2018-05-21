@@ -1,5 +1,3 @@
-import PokemonListComponent  from '../pokemonList/pokemonList.component'
-import PokemonDetailComponent  from '../pokemonDetail/pokemonDetail.component'
 import {StackNavigator} from 'react-navigation'
 import {setContextNavigation} from '../../actions/navegation.action'
 import HeaderComponent from './menu/header/Header.component'
