@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux'
 import {NavigationActions} from 'react-navigation'
-import {AppNavigator} from '../components/navigation/menu/appNavigator'
+import AppNavigator from '../components/navigation/appNavigation'
 import constants from '../commons/constants'
 
-const firstAction = AppNavigator.router.getActionForPathAndParams('Main');
+const firstAction = AppNavigator.router.getActionForPathAndParams('Primary');
 const tempNavState = AppNavigator.router.getStateForAction(firstAction);
 const initialNavState = AppNavigator.router.getStateForAction(
     tempNavState
