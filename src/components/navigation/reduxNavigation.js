@@ -1,5 +1,4 @@
 import {StackNavigator} from 'react-navigation'
-import {setContextNavigation} from '../../actions/navegation.action'
 import HeaderComponent from './menu/header/Header.component'
 import {connect} from 'react-redux'
 import React from 'react'

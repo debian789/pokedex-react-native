@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, Dimensions, StyleSheet, ScrollView} from 'react-native';
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import type, {Route, NavigationState} from 'react-native-tab-view/types';
-import {selected_tab} from '../../actions/pokemonList.action'
+//import {selected_tab} from '../../actions/pokemonList.action'
 import {connect} from 'react-redux';
 import PokemonCaughtComponent from './caught/pokemonCaught.component'
 import PokemonAllComponent from './all/pokemonAll.component'
@@ -17,9 +17,9 @@ const initialLayout = {
 
 class TapBarComponent extends Component {
     _handleIndexChange = index => {
-        this
-            .props
-            .selected_tab(index)
+      //  this
+      //      .props
+      //      .selected_tab(index)
     }
 
     _renderFooter = props => (<TabBar 
@@ -49,9 +49,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        selected_tab : (index) => {
-            return dispatch(selected_tab(index))
-        }
+        //selected_tab : (index) => {
+        //    return dispatch(selected_tab(index))
+        //}
     }
 }
 

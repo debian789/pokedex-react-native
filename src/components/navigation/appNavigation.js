@@ -1,15 +1,10 @@
 import PokemonListComponent  from '../pokemonList/pokemonList.component'
-// import PokemonDetailComponent  from '../pokemonDetail/pokemonDetail.component'
-
 import pokemonAllComponent from '../pokemonList/all/pokemonAll.component'
 import pokemonCaughtComponent from '../pokemonList/caught/pokemonCaught.component'
-
 import PokemonDetailStatsComponent from '../pokemonDetail/pokemonDetailStats/pokemonDetailStats.component'
 import PokemonDetailMovesComponent from '../pokemonDetail/pokemonDetailMoves/pokemonDetailMoves.component'
 import PokemonDetailLocationComponent from '../pokemonDetail/pokemonDetailLocation/pokemonDetailLocation.component'
-
 import {StackNavigator, TabNavigator, TabBarBottom,} from 'react-navigation'
-import {setContextNavigation} from '../../actions/navegation.action'
 import HeaderComponent from './menu/header/Header.component'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -58,6 +53,7 @@ const tabNavigationPokemonDetail =  TabNavigator({
     }
   } 
 },{
+  initialRouteName: 'PokemonDetailLocation',
   tabBarPosition: 'bottom',
   tabBarOptions: {
     upperCaseLabel: false,
