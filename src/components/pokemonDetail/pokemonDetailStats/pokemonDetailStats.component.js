@@ -2,11 +2,13 @@ import React, {Component} from 'react'
 import {View, Text, Image, ActivityIndicator} from 'react-native'
 import {NavigationActions} from 'react-navigation'
 import {connect} from 'react-redux'
+import {fetchDataList} from '../../../actions/pokemonDetail.action'
 
 class PokemonDetailStatsComponent extends Component {
     componentWillMount() {
-    //   const url = this.props.navigation.getParam('url');
-    //    this.props.fetchData(url)
+        debugger
+       const url = this.props.navigation.getParam('url');
+        this.props.fetchData(url)
     }
     
     render() {
@@ -31,5 +33,13 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchData: (url) => {
+            debugger
+            return dispatch(fetchDataList(url))
+        }
+    }
+}
 
-export default connect(mapStateToProps)(PokemonDetailStatsComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetailStatsComponent)

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, FlatList, Image, TouchableHighlight} from 'react-native'
 import {fetchDataList, updataDataSuccess} from '../../../actions'
+import {getUrl} from '../../../actions/pokemonDetail.action'
 import {connect} from 'react-redux'
 import constants from '../../../commons/constants'
 import PokemonAllStyle from './pokemonAll.style'
@@ -76,8 +77,12 @@ const mapDispatchToProps = dispatch => {
        // getContextNavigation: () => {
        //     return dispatch(getContextNavigation())
        // },
-        detailPokemon: (url) =>
-            dispatch(NavigationActions.navigate({ routeName: 'DetailPokemon', params: {url} })),
+
+       detailPokemon: (url) => {
+           return dispatch(getUrl(url))
+       } 
+       // detailPokemon: (url) =>
+       //     dispatch(NavigationActions.navigate({ routeName: 'DetailPokemon', params: {url} })),
     }
 }
 

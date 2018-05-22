@@ -1,6 +1,10 @@
 import constants from '../commons/constants'
 import {fetchDataServices} from '../api'
 
+export const getUrl = (url) => {
+    return {type: constants.action.navegation.DETAIL_POKEMON, url}
+}
+
 export const getData = () => {
     return {type: constants.action.GET_DETAIL_POKEMON, isRefreshing: true, data: []}
 }

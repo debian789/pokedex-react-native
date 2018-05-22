@@ -13,17 +13,9 @@ export default NavigationReducers = (state=initialNavState, action) => {
     let nextState;
     
     switch(action.type) {
-        case 'Login':
-            break;
-        case constants.action.navegation.GET_CONTEXT_NAVIGATION:
-            nextState = {
-                ...state,
-                navegation: action.navegation
-            }
-            break
         case constants.action.navegation.DETAIL_POKEMON:
             nextState = AppNavigator.router.getStateForAction(
-                NavigationActions.navigate({ routeName: 'DetailPokemon' }),
+                NavigationActions.navigate({ routeName: 'PokemonDetailStats', params: {url: action.url} }),
                 state
             );
             break;

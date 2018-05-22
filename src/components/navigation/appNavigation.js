@@ -53,7 +53,7 @@ const tabNavigationPokemonDetail =  TabNavigator({
     }
   } 
 },{
-  initialRouteName: 'PokemonDetailLocation',
+  initialRouteName: 'PokemonDetailStats',
   tabBarPosition: 'bottom',
   tabBarOptions: {
     upperCaseLabel: false,
