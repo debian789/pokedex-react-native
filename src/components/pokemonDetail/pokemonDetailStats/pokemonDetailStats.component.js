@@ -6,7 +6,7 @@ import {fetchDataList, getData} from '../../../actions/pokemonDetail.action'
 import Icon from 'react-native-vector-icons/Ionicons';
 import PokemonDetailStatsStyle from './pokemonDetailStats.style'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-
+import MovesetComponent from './moveset/moveset.component'
 
 class PokemonDetailStatsComponent extends Component {
     /*
@@ -52,25 +52,7 @@ class PokemonDetailStatsComponent extends Component {
         const pokemon = this.props.pokemonDetail
         if (pokemon && !pokemon.isRefreshing && pokemon.data) {
           //  AsyncStorage.setItem('titleDetailPokemon', pokemon.data.name)
-                        const data = {
-                tableHead: ['','', 'ACC', 'PWR', 'PP',''],
-                tableData: [
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12',''],
-                  ['', 'zen', '90%', '80','12','']
-                ]
-              }
+                
 
             return (
                 <ScrollView>
@@ -97,10 +79,7 @@ class PokemonDetailStatsComponent extends Component {
                         <Text style={PokemonDetailStatsStyle.titleText}>MOVERSET</Text>
                     </View>
                     <View>
-                        <Table borderStyle={{borderWidth: 0, borderColor: 'white'}}>
-                            <Row data={data.tableHead}  />
-                            <Rows data={data.tableData}/>
-                        </Table>
+                        <MovesetComponent moves = {pokemon.data.moves}/>
                     </View>
                     <View style={PokemonDetailStatsStyle.title}>
                         <Text style={PokemonDetailStatsStyle.titleText}>TYPE CONVERAGE (8) </Text>
