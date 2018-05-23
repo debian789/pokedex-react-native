@@ -1,4 +1,4 @@
-import PokemonListComponent  from '../pokemonList/pokemonList.component'
+// import PokemonListComponent  from '../pokemonList/pokemonList.component'
 import pokemonAllComponent from '../pokemonList/all/pokemonAll.component'
 import pokemonCaughtComponent from '../pokemonList/caught/pokemonCaught.component'
 import PokemonDetailStatsComponent from '../pokemonDetail/pokemonDetailStats/pokemonDetailStats.component'
@@ -32,9 +32,6 @@ const tabNavigationPokemonList =  TabNavigator({
     }
   }
 });
-
-
-
 
 
 

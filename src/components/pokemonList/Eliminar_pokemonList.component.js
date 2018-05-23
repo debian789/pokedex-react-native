@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, Dimensions, StyleSheet, ScrollView} from 'react-native';
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
-import type, {Route, NavigationState} from 'react-native-tab-view/types';
+// import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
+// import type, {Route, NavigationState} from 'react-native-tab-view/types';
 import {connect} from 'react-redux';
 import PokemonCaughtComponent from './caught/pokemonCaught.component'
 import PokemonAllComponent from './all/pokemonAll.component'
