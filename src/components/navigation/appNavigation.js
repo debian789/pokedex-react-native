@@ -4,11 +4,13 @@ import pokemonCaughtComponent from '../pokemonList/caught/pokemonCaught.componen
 import PokemonDetailStatsComponent from '../pokemonDetail/pokemonDetailStats/pokemonDetailStats.component'
 import PokemonDetailMovesComponent from '../pokemonDetail/pokemonDetailMoves/pokemonDetailMoves.component'
 import PokemonDetailLocationComponent from '../pokemonDetail/pokemonDetailLocation/pokemonDetailLocation.component'
+import PokemonDetailComponent from '../pokemonDetail/pokemonDetail.component';
 import {StackNavigator, TabNavigator, TabBarBottom,} from 'react-navigation'
 import HeaderComponent from './menu/header/Header.component'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {Button} from 'react-native'
 
 // list the pokemon tab
 const tabNavigationPokemonList =  TabNavigator({
@@ -30,6 +32,10 @@ const tabNavigationPokemonList =  TabNavigator({
     }
   }
 });
+
+
+
+
 
 
 // Detail the pokemon tab
@@ -66,17 +72,30 @@ const tabNavigationPokemonDetail =  TabNavigator({
   }
 });
 
-
 const pokemonDetailNavegation = StackNavigator({
   DetailPokemon: {screen: tabNavigationPokemonDetail},
 }, {
     headerMode: 'screen',
     initialRouteName: 'DetailPokemon',
-    showBack: true
+    showBack: false,
+    /*
+    navigationOptions: (navigation) => {
+     return {
+       headerTitle: 'titulo ? ',
+      headerLeft: (
+        <Icon name="arrow-back" size={30} color="#4F8EF7"
+          onPress={() => { return navigation.navigation.navigate('Primary')}}
+        />
+      ),
+      headerStyle: { backgroundColor: 'blue'},
+     }
+    }
+    */
 })
 
 const Main = StackNavigator({
     Main: {screen: tabNavigationPokemonList},
+    
   }, {
     headerMode: 'screen',
     initialRouteName: 'Main',
@@ -87,6 +106,7 @@ const Main = StackNavigator({
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
+
   Primary: { screen: Main },
   pokemonDetailNavegation: {screen: pokemonDetailNavegation},
 
