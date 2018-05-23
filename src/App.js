@@ -6,8 +6,6 @@ import ReduxNavigation from './components/navigation/reduxNavigation'
 
 let store = configureStore()
 
-
-
 const App = () => {
   return(<Provider store={store}>
           <View style={{flex:1}}>

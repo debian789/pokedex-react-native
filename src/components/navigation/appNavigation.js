@@ -33,8 +33,6 @@ const tabNavigationPokemonList =  TabNavigator({
   }
 });
 
-
-
 // Detail the pokemon tab
 const tabNavigationPokemonDetail =  TabNavigator({
   PokemonDetailStats: { 

@@ -47,17 +47,12 @@ class PokemonDetailStatsComponent extends Component {
             .setParams({titleDetailPokemon: value})
     }
 
-    //  componentWillUpdate() {      const pokemon = this.props.pokemonDetail
-    // debugger     if (pokemon && pokemon.data) {          debugger
-    // this.props.navigation.setParams({title: 'ho'})      } }
-
     render() {
         const pokemon = this.props.pokemonDetail
 
         if (pokemon && pokemon.data) {
             AsyncStorage.setItem('titleDetailPokemon', pokemon.data.name)
-            // this.props.navigation.setParams({title: 'ho'})
-
+            
             const data = {
                 tableHead: ['','', 'ACC', 'PWR', 'PP',''],
                 tableData: [
