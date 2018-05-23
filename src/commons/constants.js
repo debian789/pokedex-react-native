@@ -21,14 +21,6 @@ export default {
         navegation: {
             GET_CONTEXT_NAVIGATION:'GET_CONTEXT_NAVIGATION',
             DETAIL_POKEMON:'DETAIL_POKEMON',
-
-        },
-        tab_bar: {
-            SELECT_ALL_TAB: 'SELECT_ALL_TAB',
-            SELECT_CAUGHT_TAB: 'SELECT_CAUGHT_TAB',
-            SELECT_STATS_TAB: 'SELECT_STATS_TAB',
-            SELECT_MOVES_TAB: 'SELECT_MOVES_TAB',
-            SELECT_LOCATION_TAB: 'SELECT_LOCATION_TAB'
         }
     },
 }

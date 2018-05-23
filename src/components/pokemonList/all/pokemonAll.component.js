@@ -74,15 +74,9 @@ const mapDispatchToProps = dispatch => {
         fetchData: (offset, oldData) => {
             return dispatch(fetchDataList(constants.endpoinds.LIST_POKEMON, offset, oldData))
         },
-       // getContextNavigation: () => {
-       //     return dispatch(getContextNavigation())
-       // },
-
-       detailPokemon: (url) => {
+        detailPokemon: (url) => {
            return dispatch(getUrl(url))
-       } 
-       // detailPokemon: (url) =>
-       //     dispatch(NavigationActions.navigate({ routeName: 'DetailPokemon', params: {url} })),
+        }
     }
 }
 

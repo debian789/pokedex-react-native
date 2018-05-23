@@ -28,8 +28,6 @@ class AppWithNavigationState extends React.Component {
       return true;
     };
 
-    
-  
     render() {
       const { dispatch, nav } = this.props;
       return (

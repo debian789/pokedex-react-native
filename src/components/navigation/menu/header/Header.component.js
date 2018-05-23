@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {
-    View,
-    TouchableHighlight,
-    Text,
-    TextInput
-} from 'react-native'
+import {View, TouchableHighlight, Text, TextInput} from 'react-native'
 import HeaderStyle from './Header.style'
 import {connect} from 'react-redux'
 import Icon from 'react-native-vector-icons/FontAwesome'
-// import {setContextNavigation} from '../../../../actions/navegation.action'
 import {strings} from '../../../../../locales/i18n'
 
 class HeaderComponent extends Component {
@@ -25,18 +19,11 @@ class HeaderComponent extends Component {
                      <TouchableHighlight
                           style={HeaderStyle.navegation}
                           onPress={() => {
-                              // if(this.props.navigation.state.index === 0){
-
-                              if (this.props.navigation.navigation.state.routeName === 'Main') {
-                                  this.props.navigation.navigation.navigate('DetailPokemon')
-                             } else {
-                                  this.props.navigation.navigation.navigate('Main')
-
-                              }
-
-                              //  } else {
-                              //      this.props.navigation.navigate('DrawerClose');
-                              // }
+                            if (this.props.navigation.navigation.state.routeName === 'Main') {
+                                this.props.navigation.navigation.navigate('DetailPokemon')
+                            } else {
+                                this.props.navigation.navigation.navigate('Main')
+                            }
                           }}>
                          <Text><Icon name="search" size={25} style={HeaderStyle.searchIcon}/></Text>
                      </TouchableHighlight>
@@ -46,20 +33,10 @@ class HeaderComponent extends Component {
     }
 }
 
-
-
 const mapStateToProps = (state) => {
     return {
         navigation2: state.nav
     }
 }
 
-
 export default connect(mapStateToProps)(HeaderComponent)
-
-//HeaderComponent.propTypes = {
-//    navigation: PropTypes.object
-//}
-
-
-

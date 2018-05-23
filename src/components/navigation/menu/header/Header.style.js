@@ -69,6 +69,3 @@ export default StyleSheet.create({
         borderWidth: 0
     }
 })
-
-
-
