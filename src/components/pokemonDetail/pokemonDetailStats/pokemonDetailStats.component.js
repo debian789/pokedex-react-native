@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {View, Text, Image, ScrollView, ActivityIndicator, AsyncStorage} from 'react-native'
 import {NavigationActions} from 'react-navigation'
 import {connect} from 'react-redux'
-import {fetchDataList} from '../../../actions/pokemonDetail.action'
+import {fetchDataList, getData} from '../../../actions/pokemonDetail.action'
 import Icon from 'react-native-vector-icons/Ionicons';
 import PokemonDetailStatsStyle from './pokemonDetailStats.style'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
@@ -18,7 +18,7 @@ class PokemonDetailStatsComponent extends Component {
           headerStyle: { backgroundColor: 'red'},
         }
     };*/
-
+/*
     static navigationOptions = {
         title: 'What to do today?',
         headerStyle: {
@@ -27,9 +27,10 @@ class PokemonDetailStatsComponent extends Component {
         headerTitleStyle: {
             color: 'white'
         }
-    }
+    }*/
 
     componentWillMount() {
+        debugger
         const url = this
             .props
             .navigation
@@ -38,22 +39,20 @@ class PokemonDetailStatsComponent extends Component {
             .props
             .fetchData(url)
     }
-
+    
     async componentDidMount() {
-        const value = await AsyncStorage.getItem('titleDetailPokemon');
+    /*    const value = await AsyncStorage.getItem('titleDetailPokemon');
         this
             .props
             .navigation
-            .setParams({titleDetailPokemon: value})
+            .setParams({titleDetailPokemon: value})*/
     }
 
     render() {
         const pokemon = this.props.pokemonDetail
-
-        if (pokemon && pokemon.data) {
-            AsyncStorage.setItem('titleDetailPokemon', pokemon.data.name)
-            
-            const data = {
+        if (pokemon && !pokemon.isRefreshing && pokemon.data) {
+          //  AsyncStorage.setItem('titleDetailPokemon', pokemon.data.name)
+                        const data = {
                 tableHead: ['','', 'ACC', 'PWR', 'PP',''],
                 tableData: [
                   ['', 'zen', '90%', '80','12',''],

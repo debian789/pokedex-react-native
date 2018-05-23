@@ -12,15 +12,19 @@ class PokemonAllComponent extends Component {
     componentWillMount() {
         this.props.fetchData(constants.environment.PAGINATION.offset)
     }
-
+    
     _navigationDetail(item, index) {
         this.props.detailPokemon(item.url)
     }
 
     _renderItem({item, index})  {
-        const randomColorA = Math.floor(Math.random() * (240 - 180 +1) + 180)            
-        const randomColorB = Math.floor(Math.random() * (220 - 160 +1) + 160)            
-        const randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160)    
+        const randomColorA = 123//Math.floor(Math.random() * (240 - 180 +1) + 180)            
+        const randomColorB = 210//Math.floor(Math.random() * (220 - 160 +1) + 160)            
+        const randomColorC = 140//Math.floor(Math.random() * (240 - 160 +1) + 160)    
+
+
+
+
         return <View style={[PokemonAllStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
             <View style={PokemonAllStyle.head}></View>   
             <View style={PokemonAllStyle.body}>
