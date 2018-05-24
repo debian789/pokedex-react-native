@@ -7,6 +7,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import PokemonDetailStatsStyle from './pokemonDetailStats.style'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import MovesetComponent from './moveset/moveset.component'
+import {compose} from 'redux'
+import {
+    connectRequest,
+    entitiesReducer,
+    queriesReducer,
+    queryMiddleware,
+    querySelectors,
+  } from 'redux-query';
+  
 
 class PokemonDetailStatsComponent extends Component {
     /*
@@ -30,14 +39,14 @@ class PokemonDetailStatsComponent extends Component {
     }*/
 
     componentWillMount() {
-        debugger
+        /*debugger
         const url = this
             .props
             .navigation
             .getParam('url');
         this
             .props
-            .fetchData(url)
+            .fetchData(url)*/
     }
     
     async componentDidMount() {
@@ -49,8 +58,8 @@ class PokemonDetailStatsComponent extends Component {
     }
 
     render() {
-        const pokemon = this.props.pokemonDetail
-        if (pokemon && !pokemon.isRefreshing && pokemon.data) {
+        const pokemon = this.props.detailPokemon
+        if (pokemon) {
           //  AsyncStorage.setItem('titleDetailPokemon', pokemon.data.name)
                 
 
@@ -69,7 +78,7 @@ class PokemonDetailStatsComponent extends Component {
                         <Image
                             style={PokemonDetailStatsStyle.itemImage}
                             source={{
-                            uri: pokemon.data.sprites.front_default
+                            uri: pokemon.sprites.front_default
                         }}/>
                         <View style={PokemonDetailStatsStyle.count}>
                             <Text style={PokemonDetailStatsStyle.countText}>123</Text>
@@ -79,7 +88,7 @@ class PokemonDetailStatsComponent extends Component {
                         <Text style={PokemonDetailStatsStyle.titleText}>MOVERSET</Text>
                     </View>
                     <View>
-                        <MovesetComponent moves = {pokemon.data.moves}/>
+                        <MovesetComponent moves = {pokemon.moves}/>
                     </View>
                     <View style={PokemonDetailStatsStyle.title}>
                         <Text style={PokemonDetailStatsStyle.titleText}>TYPE CONVERAGE (8) </Text>
@@ -99,6 +108,38 @@ class PokemonDetailStatsComponent extends Component {
     }
 }
 
+const pokemonDetailRequest = connectRequest((props) => {
+
+    return {
+      url: props.navigation.getParam('url'),
+      transform: body => ({
+        // The server responds with an array of IDs
+        detailPokemon: body,
+      }),
+      update: {
+        detailPokemon: (prev, next) => {
+          // Discard previous `response` value (we don't need it anymore).
+          return next;
+        },
+      },
+  }
+})(PokemonDetailStatsComponent)
+
+
+
+const selectPokemons = state => {
+    return state.entities.detailPokemon || undefined;
+  };
+
+
+
+export default connect(state => ({
+    detailPokemon: selectPokemons(state),
+    }))(pokemonDetailRequest)
+
+
+/*
+
 const mapStateToProps = (state) => {
     return {navigation2: state.nav, pokemonDetail: state.pokemonDetail}
 }
@@ -112,3 +153,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetailStatsComponent)
+*/

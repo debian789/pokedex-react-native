@@ -16,7 +16,7 @@ export const getDataFail = (data) => {
 
 export const fetchDataList= (url) => {
     return (dispatch) => {
-        // dispatch(getData())
+        dispatch(getData())
         
         fetchDataServices(`${url}`)
         .then(([response, json]) => {
