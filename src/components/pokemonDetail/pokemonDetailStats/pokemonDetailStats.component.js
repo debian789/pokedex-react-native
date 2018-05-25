@@ -113,12 +113,11 @@ const pokemonDetailRequest = connectRequest((props) => {
     return {
       url: props.navigation.getParam('url'),
       transform: body => ({
-        // The server responds with an array of IDs
         detailPokemon: body,
       }),
       update: {
         detailPokemon: (prev, next) => {
-          // Discard previous `response` value (we don't need it anymore).
+           // Discard previous `response` value (we don't need it anymore).
           return next;
         },
       },
