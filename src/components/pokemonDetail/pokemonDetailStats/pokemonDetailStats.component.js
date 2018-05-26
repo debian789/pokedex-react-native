@@ -103,8 +103,8 @@ class PokemonDetailStatsComponent extends Component {
                     </View>
                     <View>
 
-                    <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-                        <Row data={tableHead} />
+                    <Table borderStyle={{borderWidth: 0, borderColor: '#c8e1ff'}}>
+                        <Row data={tableHead} flexArr={[1, 4, 2, 2, 2,0.5]}/>
 
                         <MovesetComponent key={pokemon.data.name} moves = {pokemon.data.moves} namePokemon={pokemon.data.name}/>
 

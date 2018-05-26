@@ -89,7 +89,20 @@ this.data = []
     //debugger
     if (!this.props.isLoading && this.props.detailMoves) {
      //  debugger
-     this.data.push(this.props.detailMoves)
+     this.data.push(
+      [
+        '',
+        this.props.detailMoves.name,
+        (this.props.detailMoves.accuracy
+          ? `${this.props.detailMoves.accuracy}%`
+          : ''),
+        (this.props.detailMoves.power || ''),
+        (this.props.detailMoves.pp || ''),
+        ''
+      ]
+
+      
+      )
 
      //    return this.data.map((item) => {
      //      debugger
@@ -98,8 +111,12 @@ this.data = []
 
      //  return (<View key={Math.random()}><Text>{item.name}</Text></View>)
    // })
-   debugger 
-    return (<Rows data={this.data}/>)
+  //  debugger 
+
+
+
+  
+    return (<Rows borderStyle={{borderWidth: 0, borderColor: '#c8e1ff'}} data={this.data} flexArr={[1, 4, 2, 2, 2,0.5]} />)
 
     } else {
       return (<Text>...... </Text>)
