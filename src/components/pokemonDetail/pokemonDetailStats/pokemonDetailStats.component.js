@@ -39,14 +39,14 @@ class PokemonDetailStatsComponent extends Component {
     }*/
 
     componentWillMount() {
-        /*debugger
+        debugger
         const url = this
             .props
             .navigation
             .getParam('url');
         this
             .props
-            .fetchData(url)*/
+            .fetchData(url)
     }
     
     async componentDidMount() {
@@ -58,11 +58,25 @@ class PokemonDetailStatsComponent extends Component {
     }
 
     render() {
-        const pokemon = this.props.detailPokemon
-        if (pokemon) {
+        //const pokemon = this.props.detailPokemon
+        const pokemon = this.props.pokemonDetail
+
+
+
+        if (pokemon && pokemon.data) {
           //  AsyncStorage.setItem('titleDetailPokemon', pokemon.data.name)
                 
 
+
+          tableHead = [
+            '',
+            '',
+            'ACC',
+            'PWR',
+            'PP',
+            ''
+          ]
+          
             return (
                 <ScrollView>
                     <View style={PokemonDetailStatsStyle.containerImage}>
@@ -78,7 +92,7 @@ class PokemonDetailStatsComponent extends Component {
                         <Image
                             style={PokemonDetailStatsStyle.itemImage}
                             source={{
-                            uri: pokemon.sprites.front_default
+                            uri: pokemon.data.sprites.front_default
                         }}/>
                         <View style={PokemonDetailStatsStyle.count}>
                             <Text style={PokemonDetailStatsStyle.countText}>123</Text>
@@ -88,7 +102,13 @@ class PokemonDetailStatsComponent extends Component {
                         <Text style={PokemonDetailStatsStyle.titleText}>MOVERSET</Text>
                     </View>
                     <View>
-                        <MovesetComponent moves = {pokemon.moves}/>
+
+                    <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                        <Row data={tableHead} />
+
+                        <MovesetComponent key={pokemon.data.name} moves = {pokemon.data.moves} namePokemon={pokemon.data.name}/>
+
+                    </Table>
                     </View>
                     <View style={PokemonDetailStatsStyle.title}>
                         <Text style={PokemonDetailStatsStyle.titleText}>TYPE CONVERAGE (8) </Text>
@@ -108,6 +128,7 @@ class PokemonDetailStatsComponent extends Component {
     }
 }
 
+/*
 const pokemonDetailRequest = connectRequest((props) => {
 
     return {
@@ -117,10 +138,11 @@ const pokemonDetailRequest = connectRequest((props) => {
       }),
       update: {
         detailPokemon: (prev, next) => {
-           // Discard previous `response` value (we don't need it anymore).
           return next;
         },
       },
+      force:true
+
   }
 })(PokemonDetailStatsComponent)
 
@@ -135,9 +157,9 @@ const selectPokemons = state => {
 export default connect(state => ({
     detailPokemon: selectPokemons(state),
     }))(pokemonDetailRequest)
+*/
 
 
-/*
 
 const mapStateToProps = (state) => {
     return {navigation2: state.nav, pokemonDetail: state.pokemonDetail}
@@ -152,4 +174,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetailStatsComponent)
-*/

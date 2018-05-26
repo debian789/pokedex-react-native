@@ -17,24 +17,16 @@ import {connectRequest, entitiesReducer, queriesReducer, queryMiddleware, queryS
 class MovesetComponent extends Component {
   constructor(props) {
     super(props)
-    this.data = []
   }
 
   componentWillMount() {
-// debugger
-this.data = []
-   // this.props.detailMoves = []
+
+    this.props.detailMoves = []
 
   }
 
   componentDidMount() {
-    this.data = []
-
-   // this.props.namePokemon = undefined;
-  }
-
-  componentWillUnmount() {
-    this.props.moves = undefined
+    this.props.namePokemon = undefined;
   }
 
   render() {
@@ -88,57 +80,27 @@ this.data = []
         //tableHead = ['Head', 'Head2', 'Head3', 'Head4','','']
     //debugger
     if (!this.props.isLoading && this.props.detailMoves) {
-     //  debugger
-     this.data.push(this.props.detailMoves)
+      debugger
 
-     //    return this.data.map((item) => {
-     //      debugger
-
-
-
-     //  return (<View key={Math.random()}><Text>{item.name}</Text></View>)
-   // })
-   debugger 
-    return (<Rows data={this.data}/>)
-
+     // this.props.detailMoves.data.map(() => {
+       //return (<View><Text>{Math.random()}</Text><Text>{uuidv1()}</Text></View>)
+        return (<Rows data={this.props.detailMoves}/>)
+     // })
     } else {
       return (<Text>...... </Text>)
     }
   }
 }
 
-//const movesRequest = props => {
-const movesRequest = connectRequest((props) => {
-  let name = props.namePokemon
-  
-  return props.moves.map((item, index) => {
+const movesRequest = props => {
     return {
-      url: item.move.url ,
+      url: props.move.move.url ,
       transform: body => ({detailMoves: body}),
       update: {
         detailMoves: (prev, next) => {
-          let ind = index 
-          let pe = prev 
-          let net = next 
-        //   debugger
-
-          return next
-/*
-          if (props.first) {
-            props.first = false
-            prev = undefined
-          }
-
-          if (prev) {
-              return [...prev, next]
-          } else {
-            return [next]
-          }
-*/
-
-          /*
-          if (prev) {
-            return  [
+          /*if (prev) {
+            return {
+              data: [
                 ...prev,
                 [
                   '',
@@ -151,9 +113,10 @@ const movesRequest = connectRequest((props) => {
                   ''
                 ]
               ]
-
+            }
           } else {
-            
+            */
+           debugger
             return  [
                 [
                   '',
@@ -165,40 +128,32 @@ const movesRequest = connectRequest((props) => {
                   (next.pp || ''),
                   ''
                 ]
-            ]
-          }            
-            */
+              ]            
+            
            
         }
       },
       force: true
 
-
     }
 
-  })
 
-
-
-
-
-})(MovesetComponent)
+}
 
 const selectMoves = (state, props) => {
   return state.entities.detailMoves || undefined;
 };
 
-
+/*
 export default connect(state => ({
     detailMoves: selectMoves(state),
     }))(movesRequest)
 
+*/
 
-
-
-/*
 export default compose(connect((state, props) => {
   const query = movesRequest(props);
+  //debugger
   return {
     isLoading: querySelectors.isPending(state.queries, query),
     detailMoves: selectMoves(state, props),
@@ -206,5 +161,83 @@ export default compose(connect((state, props) => {
   };
 }), connectRequest(props => props.query))(MovesetComponent);
 
+/*
+const topStoriesRequest = () => {
+    return {
+      url: `https://hacker-news.firebaseio.com/v0/topstories.json`,
+      transform: body => ({
+        topStoryIds: body,
+      }),
+      update: {
+        topStoryIds: (prev, next) => {
+          return next;
+        },
+      },
+    };
+  };
+
+  const itemRequest = itemId => {
+    return {
+      url: `https://hacker-news.firebaseio.com/v0/item/${itemId}.json`,
+      transform: body => ({
+        itemsById: {
+          [itemId]: body,
+        },
+      }),
+      update: {
+        itemsById: (prev, next) => {
+          return {
+            ...prev,
+            ...next,
+          };
+        },
+      },
+    };
+  };
+
+
+
+  const selectItem = (state, props) => {
+    return (state.entities.itemsById || {})[props.itemId];
+  };
+
+
+
+export default compose(
+    connect((state, props) => {
+      const query = itemRequest(props.itemId);
+      return {
+        isLoading: querySelectors.isPending(state.queries, query),
+        item: selectItem(state, props),
+        query,
+      };
+    }),
+    connectRequest(props => props.query)
+  )(MovesetComponent);
 
 */
+
+/*
+const mapStateToProps = state => ({
+    message: state.entities.message,
+  });
+
+const mapPropsToConfigs = () => helloRequest();
+
+const mapDispatchToProps = () =>  {
+    return {
+        fetchData: (url) => {
+            return dispatch(fetchDataList(url))
+        }
+    }
+}
+*/
+
+/*
+export default compose(
+  connect(mapStateToProps),
+  connectRequest(mapPropsToConfigs)
+)(MovesetComponent);
+
+*/
+//export default connect(null)(MovesetComponent)
