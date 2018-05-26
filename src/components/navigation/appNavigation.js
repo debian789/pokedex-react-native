@@ -4,7 +4,7 @@ import pokemonCaughtComponent from '../pokemonList/caught/pokemonCaught.componen
 import PokemonDetailStatsComponent from '../pokemonDetail/pokemonDetailStats/pokemonDetailStats.component'
 import PokemonDetailMovesComponent from '../pokemonDetail/pokemonDetailMoves/pokemonDetailMoves.component'
 import PokemonDetailLocationComponent from '../pokemonDetail/pokemonDetailLocation/pokemonDetailLocation.component'
-import PokemonDetailComponent from '../pokemonDetail/pokemonDetail.component';
+// import PokemonDetailComponent from '../pokemonDetail/pokemonDetail.component';
 import {StackNavigator, TabNavigator, TabBarBottom,} from 'react-navigation'
 import HeaderComponent from './menu/header/Header.component'
 import React from 'react'
@@ -41,20 +41,20 @@ const tabNavigationPokemonDetail =  TabNavigator({
       tabBarLabel: "Stats",
     }
   },
+  PokemonDetailMoves: { 
+    screen: PokemonDetailMovesComponent,
+    navigationOptions: {
+      tabBarLabel: "Moves",
+    }
+  }, 
   PokemonDetailLocation: { 
     screen: PokemonDetailLocationComponent,
     navigationOptions: {
       tabBarLabel: "Location",
     }
   },
-  PokemonDetailMoves: { 
-    screen: PokemonDetailMovesComponent,
-    navigationOptions: {
-      tabBarLabel: "Moves",
-    }
-  } 
 },{
-  initialRouteName: 'PokemonDetailStats',
+  initialRouteName: 'PokemonDetailMoves',
   tabBarPosition: 'bottom',
   tabBarOptions: {
     upperCaseLabel: false,

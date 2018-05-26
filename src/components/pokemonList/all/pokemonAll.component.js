@@ -22,9 +22,6 @@ class PokemonAllComponent extends Component {
         const randomColorB = 210//Math.floor(Math.random() * (220 - 160 +1) + 160)            
         const randomColorC = 140//Math.floor(Math.random() * (240 - 160 +1) + 160)    
 
-
-
-
         return <View style={[PokemonAllStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
             <View style={PokemonAllStyle.head}></View>   
             <View style={PokemonAllStyle.body}>
