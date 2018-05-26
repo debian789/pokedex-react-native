@@ -1,18 +1,10 @@
 import React, {Component} from 'react'
-import {View,Text} from 'react-native'
+import {View, Text} from 'react-native'
 import {connect} from 'react-redux'
-import {
-  Table,
-  TableWrapper,
-  Row,
-  Rows,
-  Col,
-  Cols,
-  Cell
-} from 'react-native-table-component';
 import {fetchDataList} from '../../../../actions/pokemonDetailMoveset.action'
 import {compose} from 'redux'
 import {connectRequest, entitiesReducer, queriesReducer, queryMiddleware, querySelectors} from 'redux-query';
+import MovesetStyle from './moveset.style'
 
 class MovesetComponent extends Component {
   constructor(props) {
@@ -21,16 +13,16 @@ class MovesetComponent extends Component {
   }
 
   componentWillMount() {
-// debugger
-this.data = []
-   // this.props.detailMoves = []
+    // debugger
+    this.data = []
+    // this.props.detailMoves = []
 
   }
 
   componentDidMount() {
     this.data = []
 
-   // this.props.namePokemon = undefined;
+    // this.props.namePokemon = undefined;
   }
 
   componentWillUnmount() {
@@ -39,9 +31,7 @@ this.data = []
 
   render() {
     // debugger if (this.props.detailMoves &&    this.props.detailMoves.count  && )
-    // { WS}
-
-    //tableData = []
+    // { WS} tableData = []
 
     tableHead = [
       '',
@@ -52,8 +42,8 @@ this.data = []
       ''
     ]
 
-    //  debugger  if (this.props.detailMoves)  {
-    // this.props.detailMoves.map((item) => {
+    //  debugger  if (this.props.detailMoves)  { this.props.detailMoves.map((item)
+    // => {
 
     /*
           if (this.props.detailMoves && this.props.detailMoves[this.props.namePokemon])  {
@@ -85,11 +75,10 @@ this.data = []
               ['', 'zen', '90%', '80','12',''],
               ['', 'zen', '90%', '80','12','']
         ]*/
-        //tableHead = ['Head', 'Head2', 'Head3', 'Head4','','']
-    //debugger
+    //tableHead = ['Head', 'Head2', 'Head3', 'Head4','',''] debugger
     if (!this.props.isLoading && this.props.detailMoves) {
-     //  debugger
-     this.data.push(
+      //  debugger
+      /*this.data.push(
       [
         '',
         this.props.detailMoves.name,
@@ -101,25 +90,86 @@ this.data = []
         ''
       ]
 
-      
+
       )
+      */
+      this
+        .data
+        .push(this.props.detailMoves)
 
-     //    return this.data.map((item) => {
-     //      debugger
+      return this
+        .data
+        .map((item, index) => {
+          //      debugger
+          debugger
 
+          const colorBase = [
+            '#BFEBDB',
+            '#C2DEDE',
+            '#92CFCC',
+            '#B2E3B3',
+            '#D2F4BF',
+            '#D0C2E3',
+            '#F9C4BF',
+            '#ECCFC6',
+            '#EFB0A6',
+            '#FDFB78',
+            '#E1E7F4',
+            '#FFF597',
+            '#F4E5C7',
+            '#F6E9D4',
+            '#EEFBF9',
+            '#CCD2E3',
+            '#6F86A5',
+            '#E1E7F4',
+            '#DCECE4',
+            '#CCD2E3',
+            '#DCDDAA',
+            '#BF9569',
+            '#C33766',
+            '#7E72AC'
+          ]
+          let randNumber = Math.floor(Math.random() * colorBase.length);
 
+          const background = {
+            backgroundColor: colorBase[randNumber]
+          }
 
-     //  return (<View key={Math.random()}><Text>{item.name}</Text></View>)
-   // })
-  //  debugger 
+          return (
+            <View key={index} style={MovesetStyle.containerRow}>
+              <View style={[MovesetStyle.itemStart, background]}>
+                <Text></Text>
+              </View>
+              <View style={MovesetStyle.itemTitle}>
+                <Text>{item.name}</Text>
+              </View>
+              <View style={MovesetStyle.itemCount}>
+                <Text style={MovesetStyle.itemCountText}>{(item.accuracy
+                    ? `${item.accuracy}%`
+                    : '')}</Text>
+              </View>
+              <View style={MovesetStyle.itemCount}>
+                <Text style={MovesetStyle.itemCountText} >{(item.power || '')}</Text>
+              </View>
+              <View style={MovesetStyle.itemCount}>
+                <Text style={MovesetStyle.itemCountText}>{(item.pp || '')}</Text>
+              </View>
+              <View style={[MovesetStyle.itemEnd, background]}>
+                <Text></Text>
+              </View>
+            </View>
+          )
 
-
-
-  
-    return (<Rows borderStyle={{borderWidth: 0, borderColor: '#c8e1ff'}} data={this.data} flexArr={[1, 4, 2, 2, 2,0.5]} />)
+          //   return (<View key={Math.random()}><Text>{item.name}</Text></View>)
+        })
+      //  debugger  return (<Rows borderStyle={{borderWidth: 0, borderColor:
+      // '#c8e1ff'}} data={this.data} flexArr={[1, 4, 2, 2, 2,0.5]} />)
 
     } else {
-      return (<Text>...... </Text>)
+      return (
+        <Text>......
+        </Text>
+      )
     }
   }
 }
@@ -127,20 +177,22 @@ this.data = []
 //const movesRequest = props => {
 const movesRequest = connectRequest((props) => {
   let name = props.namePokemon
-  
-  return props.moves.map((item, index) => {
-    return {
-      url: item.move.url ,
-      transform: body => ({detailMoves: body}),
-      update: {
-        detailMoves: (prev, next) => {
-          let ind = index 
-          let pe = prev 
-          let net = next 
-        //   debugger
 
-          return next
-/*
+  return props
+    .moves
+    .map((item, index) => {
+      return {
+        url: item.move.url,
+        transform: body => ({detailMoves: body}),
+        update: {
+          detailMoves: (prev, next) => {
+            let ind = index
+            let pe = prev
+            let net = next
+            //   debugger
+
+            return next
+            /*
           if (props.first) {
             props.first = false
             prev = undefined
@@ -153,7 +205,7 @@ const movesRequest = connectRequest((props) => {
           }
 */
 
-          /*
+            /*
           if (prev) {
             return  [
                 ...prev,
@@ -170,7 +222,7 @@ const movesRequest = connectRequest((props) => {
               ]
 
           } else {
-            
+
             return  [
                 [
                   '',
@@ -183,21 +235,16 @@ const movesRequest = connectRequest((props) => {
                   ''
                 ]
             ]
-          }            
+          }
             */
-           
-        }
-      },
-      force: true
 
+          }
+        },
+        force: true
 
-    }
+      }
 
-  })
-
-
-
-
+    })
 
 })(MovesetComponent)
 
@@ -205,13 +252,7 @@ const selectMoves = (state, props) => {
   return state.entities.detailMoves || undefined;
 };
 
-
-export default connect(state => ({
-    detailMoves: selectMoves(state),
-    }))(movesRequest)
-
-
-
+export default connect(state => ({detailMoves: selectMoves(state)}))(movesRequest)
 
 /*
 export default compose(connect((state, props) => {
