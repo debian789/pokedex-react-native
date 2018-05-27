@@ -123,15 +123,11 @@ class MovesetComponent extends Component {
           '#C33766',
           '#7E72AC'
         ]
-        let randNumber = Math.floor(Math.random() * colorBase.length);
-
         
-      return this
+        return this
         .data
         .map((item, index) => {
-          //      debugger
-          debugger
-
+          let randNumber = Math.floor(Math.random() * colorBase.length);
        
           const background = {
             backgroundColor: colorBase[randNumber]
@@ -161,12 +157,7 @@ class MovesetComponent extends Component {
               </View>
             </View>
           )
-
-          //   return (<View key={Math.random()}><Text>{item.name}</Text></View>)
         })
-      //  debugger  return (<Rows borderStyle={{borderWidth: 0, borderColor:
-      // '#c8e1ff'}} data={this.data} flexArr={[1, 4, 2, 2, 2,0.5]} />)
-
     } else {
       return (
         <Text>......
@@ -176,7 +167,6 @@ class MovesetComponent extends Component {
   }
 }
 
-//const movesRequest = props => {
 const movesRequest = connectRequest((props) => {
   let name = props.namePokemon
 
@@ -188,57 +178,7 @@ const movesRequest = connectRequest((props) => {
         transform: body => ({detailMoves: body}),
         update: {
           detailMoves: (prev, next) => {
-            let ind = index
-            let pe = prev
-            let net = next
-            //   debugger
-
             return next
-            /*
-          if (props.first) {
-            props.first = false
-            prev = undefined
-          }
-
-          if (prev) {
-              return [...prev, next]
-          } else {
-            return [next]
-          }
-*/
-
-            /*
-          if (prev) {
-            return  [
-                ...prev,
-                [
-                  '',
-                  next.name,
-                  (next.accuracy
-                    ? `${next.accuracy}%`
-                    : ''),
-                  (next.power || ''),
-                  (next.pp || ''),
-                  ''
-                ]
-              ]
-
-          } else {
-
-            return  [
-                [
-                  '',
-                  next.name,
-                  (next.accuracy
-                    ? `${next.accuracy}%`
-                    : ''),
-                  (next.power || ''),
-                  (next.pp || ''),
-                  ''
-                ]
-            ]
-          }
-            */
 
           }
         },
@@ -255,16 +195,3 @@ const selectMoves = (state, props) => {
 };
 
 export default connect(state => ({detailMoves: selectMoves(state)}))(movesRequest)
-
-/*
-export default compose(connect((state, props) => {
-  const query = movesRequest(props);
-  return {
-    isLoading: querySelectors.isPending(state.queries, query),
-    detailMoves: selectMoves(state, props),
-    query
-  };
-}), connectRequest(props => props.query))(MovesetComponent);
-
-
-*/
