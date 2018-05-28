@@ -1,6 +1,7 @@
 export default {
     environment: {
         URL_SERVICES:'http://pokeapi.co/api/v2/',
+        URL_IMAGE: item => (`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item}.png`),
         PAGINATION: {
             limit: 20,
             offset: 0
@@ -18,6 +19,11 @@ export default {
         GET_DETAIL_MOVESET_POKEMON: 'GET_DETAIL_MOVESET_POKEMON',
         GET_DETAIL_MOVESET_SUCCESS_POKEMON: 'GET_DETAIL_MOVESET_SUCCESS_POKEMON',
         GET_DETAIL_MOVESET_FAIL_POKEMON: 'GET_DETAIL_MOVESET_FAIL_POKEMON',
+
+        GET_DETAIL_EVOLUTION_POKEMON: 'GET_DETAIL_EVOLUTION_POKEMON',
+        GET_DETAIL_EVOLUTION_SUCCESS_POKEMON: 'GET_DETAIL_EVOLUTION_SUCCESS_POKEMON',
+        GET_DETAIL_EVOLUTION_FAIL_POKEMON: 'GET_DETAIL_EVOLUTION_FAIL_POKEMON',
+
 
         GET_DETAIL_POKEMON: 'GET_DETAIL_POKEMON',
         GET_DETAIL_SUCCESS_POKEMON: 'GET_DETAIL_SUCCESS_POKEMON',

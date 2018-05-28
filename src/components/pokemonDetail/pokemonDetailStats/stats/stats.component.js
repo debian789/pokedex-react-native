@@ -22,7 +22,7 @@ class StatsComponent extends Component {
                 let width = item.base_stat >=  100 ? 100 : item.base_stat;
 
                 return (
-                    <View style={StatsStyle.container}>
+                    <View style={StatsStyle.container} key={index}>
                         <View style={StatsStyle.textItem}>
                             <Text style={StatsStyle.text}>{item.stat.name}</Text>
                         </View>

@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import {NavigationActions} from 'react-navigation'
 import {connect} from 'react-redux'
-import {fetchDataList, getData} from '../../../actions/pokemonDetail.action'
+import {fetchDataEvolution, getData} from '../../../actions/pokemonDetailEvolution.action'
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Table,TableWrapper,Row,Rows,Col, Cols, Cell} from 'react-native-table-component';
 //import MovesetComponent from './moveset/moveset.component'
@@ -18,6 +18,7 @@ import PokemonDetailStatsStyle from './pokemonDetailStats.style'
 import StatsComponent from './stats/stats.component'
 import {compose} from 'redux'
 import {connectRequest, entitiesReducer, queriesReducer, queryMiddleware, querySelectors} from 'redux-query';
+import EvolutionsComponent from './evolutions/evolutions.component';
 
 class PokemonDetailStatsComponent extends Component {
     /*
@@ -39,20 +40,22 @@ class PokemonDetailStatsComponent extends Component {
             color: 'white'
         }
     }*/
-/*
-    componentWillMount() {
-        debugger
-        const url = this
-            .props
-            .navigation
-            .getParam('url');
-        this
-            .props
-            .fetchData(url)
-    }
-    /*
 
-    async componentDidMount() {
+    componentWillMount() {
+    // debugger
+       // this
+       //     .props
+       //     .fetchData(url)
+    }
+
+    componentWillReceiveProps () {
+        if (this.props.pokemonDetail.data) {
+            this.props.fetchDataEvolution(this.props.pokemonDetail.data.id)
+        }
+    }
+    
+
+    // async componentDidMount() {
         /*    const value = await AsyncStorage.getItem('titleDetailPokemon');
         this
             .props
@@ -104,6 +107,7 @@ class PokemonDetailStatsComponent extends Component {
                         </Text>
                     </View>
                     <View style={PokemonDetailStatsStyle.containerType}>
+                        <EvolutionsComponent/>
                     </View>
                 </ScrollView>
             )
@@ -146,7 +150,19 @@ export default connect(state => ({
 */
 
 const mapStateToProps = (state) => {
-    return {navigation2: state.nav, pokemonDetail: state.pokemonDetail}
+    return {
+        navigation2: state.nav, 
+        pokemonDetail: state.pokemonDetail
+    }
 }
 
-export default connect(mapStateToProps)(PokemonDetailStatsComponent)
+const mapDispatchToProps = distpatch => {
+    return {
+        fetchDataEvolution: (id) => {
+            return distpatch(fetchDataEvolution(id))
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetailStatsComponent)

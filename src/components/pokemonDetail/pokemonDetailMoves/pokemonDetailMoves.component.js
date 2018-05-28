@@ -35,7 +35,6 @@ class PokemonDetailMovesComponent extends Component {
     }*/
 
     componentWillMount() {
-        debugger
         const url = this
             .props
             .navigation
