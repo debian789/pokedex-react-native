@@ -54,5 +54,9 @@ export default StyleSheet.create({
     containerType: {
         flex: 1,
         flexDirection: 'row',
+    },
+    containerStats: {
+        marginBottom: 10,
+        marginTop: 10,
     }
 })

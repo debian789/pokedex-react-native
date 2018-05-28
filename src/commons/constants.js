@@ -31,4 +31,9 @@ export default {
             DETAIL_POKEMON:'DETAIL_POKEMON',
         }
     },
+    colors: {
+        dark_colors: ['#BF9569','#C33766','#F78019','#BCC1C6','#645B75','#9E00AD','#7E72AC','#BE9A6A','#0071B8'],
+        light_colors: ['#BFEBDB','#C2DEDE','#92CFCC','#B2E3B3','#D2F4BF','#D0C2E3','#F9C4BF','#ECCFC6','#EFB0A6',
+                        '#FDFB78','#E1E7F4','#FFF597','#F4E5C7','#F6E9D4','#EEFBF9','#CCD2E3','#6F86A5','#E1E7F4','#DCECE4','#CCD2E3','#DCDDAA','#BF9569','#C33766','#7E72AC']
+    }
 }

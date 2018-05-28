@@ -15,6 +15,7 @@ import {Table,TableWrapper,Row,Rows,Col, Cols, Cell} from 'react-native-table-co
 //import MovesetComponent from './moveset/moveset.component'
 import PokemonDetailStatsStyle from './pokemonDetailStats.style'
 //import TypesComponent from './types/types.component'
+import StatsComponent from './stats/stats.component'
 import {compose} from 'redux'
 import {connectRequest, entitiesReducer, queriesReducer, queryMiddleware, querySelectors} from 'redux-query';
 
@@ -95,15 +96,14 @@ class PokemonDetailStatsComponent extends Component {
                         }
                         </Text>
                     </View>
-                    <View>
-                       
+                    <View style={PokemonDetailStatsStyle.containerStats}>
+                        <StatsComponent/>
                     </View>
                     <View style={PokemonDetailStatsStyle.title}>
                         <Text style={PokemonDetailStatsStyle.titleText}>TYPE CONVERAGE (8)
                         </Text>
                     </View>
                     <View style={PokemonDetailStatsStyle.containerType}>
-                   
                     </View>
                 </ScrollView>
             )

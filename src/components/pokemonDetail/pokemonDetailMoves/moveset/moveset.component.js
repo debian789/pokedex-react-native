@@ -5,7 +5,7 @@ import {fetchDataList} from '../../../../actions/pokemonDetailMoveset.action'
 import {compose} from 'redux'
 import {connectRequest, entitiesReducer, queriesReducer, queryMiddleware, querySelectors} from 'redux-query';
 import MovesetStyle from './moveset.style'
-
+import constants from '../../../../commons/constants'
 class MovesetComponent extends Component {
   constructor(props) {
     super(props)
@@ -97,32 +97,7 @@ class MovesetComponent extends Component {
         .data
         .push(this.props.detailMoves)
 
-        const colorBase = [
-          '#BFEBDB',
-          '#C2DEDE',
-          '#92CFCC',
-          '#B2E3B3',
-          '#D2F4BF',
-          '#D0C2E3',
-          '#F9C4BF',
-          '#ECCFC6',
-          '#EFB0A6',
-          '#FDFB78',
-          '#E1E7F4',
-          '#FFF597',
-          '#F4E5C7',
-          '#F6E9D4',
-          '#EEFBF9',
-          '#CCD2E3',
-          '#6F86A5',
-          '#E1E7F4',
-          '#DCECE4',
-          '#CCD2E3',
-          '#DCDDAA',
-          '#BF9569',
-          '#C33766',
-          '#7E72AC'
-        ]
+        const colorBase = constants.colors.light_colors
         
         return this
         .data

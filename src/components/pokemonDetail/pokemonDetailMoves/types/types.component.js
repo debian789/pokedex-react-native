@@ -4,20 +4,10 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {connectRequest, entitiesReducer, queriesReducer, queryMiddleware, querySelectors} from 'redux-query';
 import TypesStyle from './types.style'
-
+import constants from '../../../../commons/constants'
 class TypesComponent extends Component {
     render() {
-        const colorBase = [
-            '#BF9569',
-            '#C33766',
-            '#F78019',
-            '#BCC1C6',
-            '#645B75',
-            '#9E00AD',
-            '#7E72AC',
-            '#BE9A6A',
-            '#0071B8'
-        ]
+        const colorBase = constants.colors.dark_colors
 
         return this
             .props
