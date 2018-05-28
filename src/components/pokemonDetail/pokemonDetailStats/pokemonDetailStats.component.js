@@ -84,7 +84,7 @@ class PokemonDetailStatsComponent extends Component {
                             uri: pokemon.data.sprites.front_default
                         }}/>
                         <View style={PokemonDetailStatsStyle.count}>
-                            <Text style={PokemonDetailStatsStyle.countText}>123</Text>
+                            <Text style={PokemonDetailStatsStyle.countText}>{pokemon.data.id}</Text>
                         </View>
                     </View>
                     <View style={PokemonDetailStatsStyle.title}>
@@ -100,7 +100,7 @@ class PokemonDetailStatsComponent extends Component {
                         <StatsComponent/>
                     </View>
                     <View style={PokemonDetailStatsStyle.title}>
-                        <Text style={PokemonDetailStatsStyle.titleText}>TYPE CONVERAGE (8)
+                        <Text style={PokemonDetailStatsStyle.titleText}>Evolution
                         </Text>
                     </View>
                     <View style={PokemonDetailStatsStyle.containerType}>

@@ -1,11 +1,5 @@
 import React, {Component} from 'react'
-import {
-    View,
-    Text,
-    Image,
-    ScrollView,
-    ActivityIndicator,
-    AsyncStorage
+import {    View,    Text,    Image,    ScrollView,    ActivityIndicator,    AsyncStorage
 } from 'react-native'
 import {NavigationActions} from 'react-navigation'
 import {connect} from 'react-redux'
@@ -83,13 +77,13 @@ class PokemonDetailMovesComponent extends Component {
                             uri: pokemon.data.sprites.front_default
                         }}/>
                         <View style={PokemonDetailMovesStyle.count}>
-                            <Text style={PokemonDetailMovesStyle.countText}>123</Text>
+                            <Text style={PokemonDetailMovesStyle.countText}>{pokemon.data.id}</Text>
                         </View>
                     </View>
                     <View style={PokemonDetailMovesStyle.title}>
                         <Text style={PokemonDetailMovesStyle.titleText}>MOVERSET</Text>
                     </View>
-                    <View>
+                    <View style={PokemonDetailMovesStyle.containerMovesets}>
                         <View style={MovesetStyle.containerTitle}>
                             <View style={MovesetStyle.itemStart}>
                                 <Text></Text>
