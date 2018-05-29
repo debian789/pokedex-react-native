@@ -14,7 +14,7 @@ class PokemonAllComponent extends Component {
     }
     
     _navigationDetail(item, index) {
-        this.props.setParams({url:item.url})
+        this.props.setParams({url:item.url, name: item.name})
     }
 
     _renderItem({item, index})  {
@@ -22,6 +22,9 @@ class PokemonAllComponent extends Component {
         const randomColorB = 210//Math.floor(Math.random() * (220 - 160 +1) + 160)            
         const randomColorC = 140//Math.floor(Math.random() * (240 - 160 +1) + 160)    
 
+        let idPokemon = item.url.split('/')
+        idPokemon = idPokemon[idPokemon.length-2]
+        
         return <View style={[PokemonAllStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
             <View style={PokemonAllStyle.head}></View>   
             <View style={PokemonAllStyle.body}>
@@ -29,7 +32,7 @@ class PokemonAllComponent extends Component {
                     onPress={this._navigationDetail.bind(this, item, index)}
                 >
                     <Image style={PokemonAllStyle.itemImage} 
-                        source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}}
+                        source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`}}
                     />
                 </TouchableHighlight>
             </View>  
@@ -38,6 +41,9 @@ class PokemonAllComponent extends Component {
                 <Text style={PokemonAllStyle.count}>{index + 1}</Text>
             </View>
         </View>
+
+
+
     }
 
     _handleRefresh() {

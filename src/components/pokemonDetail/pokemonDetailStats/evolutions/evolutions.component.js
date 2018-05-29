@@ -29,7 +29,7 @@ class EvolutionsComponent extends Component {
     }
 
     _geEvolutions(item) {
-        if (item.list && item.list[0].evolves_to.length > 0) {
+        if (item.list && item.list[0].evolves_to && item.list[0].evolves_to.length > 0) {
             let urlImage = this._getUrlImage(item.list[0].species.url)
             return this._geEvolutions({
                 list: item.list[0].evolves_to,
