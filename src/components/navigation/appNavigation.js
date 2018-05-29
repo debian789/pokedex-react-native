@@ -28,6 +28,17 @@ const tabNavigationPokemonList =  TabNavigator({
   }
 });
 
+
+const PokemonDetailMovesNavegation = StackNavigator({
+  PokemonDetailMovesTab: {screen: PokemonDetailMovesComponent},
+}, {
+    headerMode: 'screen',
+    initialRouteName: 'PokemonDetailMovesTab',
+    showBack: false,
+})
+
+
+
 // Detail the pokemon tab
 const tabNavigationPokemonDetail =  TabNavigator({
   PokemonDetailStats: { 
@@ -37,7 +48,7 @@ const tabNavigationPokemonDetail =  TabNavigator({
     }
   },
   PokemonDetailMoves: { 
-    screen: PokemonDetailMovesComponent,
+    screen: PokemonDetailMovesNavegation,
     navigationOptions: {
       tabBarLabel: "Moves",
     }
@@ -65,7 +76,7 @@ const tabNavigationPokemonDetail =  TabNavigator({
 const pokemonDetailNavegation = StackNavigator({
   DetailPokemon: {screen: tabNavigationPokemonDetail},
 }, {
-    headerMode: 'screen',
+  headerMode: 'none',
     initialRouteName: 'DetailPokemon',
     showBack: false,
 })
