@@ -11,7 +11,5 @@ export default configureStore = () => {
       
     let store = createStore(Reducers, applyMiddleware(thunk, middleware))
 
-
-
     return store
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import {View, TouchableHighlight, Text, TextInput} from 'react-native'
+import {View, TouchableHighlight, Text} from 'react-native'
 import HeaderStyle from './Header.style'
 import {connect} from 'react-redux'
 import Icon from 'react-native-vector-icons/FontAwesome'

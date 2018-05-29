@@ -7,11 +7,8 @@ export default StyleSheet.create({
         marginBottom: 5,       
     },
     textItem: {
-       // borderColor: 'red',
-        //borderWidth: 1,
         width: '35%',
         justifyContent: 'center',
-        // alignItems: 'center',
     },
     text:{
         textAlign:'right',
@@ -22,10 +19,7 @@ export default StyleSheet.create({
         height: 25,
     },
     barItem: {
-
         width: '100%',
-        height: 25,        
-        //borderColor: 'blue',
-        //borderWidth: 1,
+        height: 25,
     }
 })

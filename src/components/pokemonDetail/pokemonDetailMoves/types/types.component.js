@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import {View, Text} from 'react-native'
 import {connect} from 'react-redux'
-import {compose} from 'redux'
-import {connectRequest, entitiesReducer, queriesReducer, queryMiddleware, querySelectors} from 'redux-query';
 import TypesStyle from './types.style'
 import constants from '../../../../commons/constants'
+
 class TypesComponent extends Component {
     render() {
         const colorBase = constants.colors.dark_colors

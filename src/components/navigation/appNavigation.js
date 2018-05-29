@@ -1,16 +1,11 @@
-// import PokemonListComponent  from '../pokemonList/pokemonList.component'
 import pokemonAllComponent from '../pokemonList/all/pokemonAll.component'
 import pokemonCaughtComponent from '../pokemonList/caught/pokemonCaught.component'
 import PokemonDetailStatsComponent from '../pokemonDetail/pokemonDetailStats/pokemonDetailStats.component'
 import PokemonDetailMovesComponent from '../pokemonDetail/pokemonDetailMoves/pokemonDetailMoves.component'
 import PokemonDetailLocationComponent from '../pokemonDetail/pokemonDetailLocation/pokemonDetailLocation.component'
-// import PokemonDetailComponent from '../pokemonDetail/pokemonDetail.component';
-import {StackNavigator, TabNavigator, TabBarBottom,} from 'react-navigation'
+import {StackNavigator, TabNavigator} from 'react-navigation'
 import HeaderComponent from './menu/header/Header.component'
 import React from 'react'
-import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Button} from 'react-native'
 
 // list the pokemon tab
 const tabNavigationPokemonList =  TabNavigator({
@@ -73,19 +68,6 @@ const pokemonDetailNavegation = StackNavigator({
     headerMode: 'screen',
     initialRouteName: 'DetailPokemon',
     showBack: false,
-    /*
-    navigationOptions: (navigation) => {
-     return {
-       headerTitle: 'titulo ? ',
-      headerLeft: (
-        <Icon name="arrow-back" size={30} color="#4F8EF7"
-          onPress={() => { return navigation.navigation.navigate('Primary')}}
-        />
-      ),
-      headerStyle: { backgroundColor: 'blue'},
-     }
-    }
-    */
 })
 
 const Main = StackNavigator({
@@ -101,7 +83,6 @@ const Main = StackNavigator({
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
-
   Primary: { screen: Main },
   pokemonDetailNavegation: {screen: pokemonDetailNavegation},
 

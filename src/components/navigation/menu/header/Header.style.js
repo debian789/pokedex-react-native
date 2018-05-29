@@ -19,8 +19,7 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     menuIcon: {
-        color: Theme.colors.trowelB.a,
-
+        color: Theme.colors.trowelB.a
     },
     logo: {
         flexDirection: 'column',
@@ -44,7 +43,6 @@ export default StyleSheet.create({
         paddingLeft: 7,
         paddingRight: 7,
         paddingBottom: 7,
-
     },
     searchContainer: {
         backgroundColor:  Theme.colors.trowelB.a,

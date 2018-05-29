@@ -1,16 +1,13 @@
 import React, {Component} from 'react'
 import {View, Text, Image, ActivityIndicator} from 'react-native'
-import {NavigationActions} from 'react-navigation'
 import {clearData, fetchDataEvolution} from '../../../../actions/pokemonDetailEvolution.action'
 import {connect} from 'react-redux'
 import EvolutionStyle from './evolutions.style'
-import {compose} from 'redux'
 import constants from '../../../../commons/constants'
 
 const colors = constants.colors.dark_colors;
 
-class EvolutionsComponent extends Component {
-    
+class EvolutionsComponent extends Component {    
     componentWillMount() {    
         this.evolutions = []
         this.props.clearData()
@@ -71,19 +68,20 @@ class EvolutionsComponent extends Component {
             
             return (
                 <View style={EvolutionStyle.container}>
-                    {this.evolutions.map((item, index) => {
-                        return (
-                            <View key={index} style={[EvolutionStyle.itemEvolution, {backgroundColor: constants.colors.dark_colors[index]}]}>
-                                <Image
-                                    style={EvolutionStyle.imgPokemon}
-                                    source={{
-                                    uri: item.urlImage
-                                }}/>
-                                <Text style={EvolutionStyle.itemText}>{item.name}</Text>
-                            </View>
-                        )
-                    })
-}
+                    {
+                        this.evolutions.map((item, index) => {
+                            return (
+                                <View key={index} style={[EvolutionStyle.itemEvolution, {backgroundColor: constants.colors.dark_colors[index]}]}>
+                                    <Image
+                                        style={EvolutionStyle.imgPokemon}
+                                        source={{
+                                        uri: item.urlImage
+                                    }}/>
+                                    <Text style={EvolutionStyle.itemText}>{item.name}</Text>
+                                </View>
+                            )
+                        })
+                    }
                 </View>
             )
 

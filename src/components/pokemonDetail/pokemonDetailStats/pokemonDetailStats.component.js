@@ -1,55 +1,17 @@
 import React, {Component} from 'react'
-import {    View,    Text,    Image,    ScrollView,    ActivityIndicator,    AsyncStorage} from 'react-native'
-import {NavigationActions} from 'react-navigation'
+import {View, Text, Image, ScrollView, ActivityIndicator, AsyncStorage} from 'react-native'
 import {connect} from 'react-redux'
 import {fetchDataEvolution,clearData, getData} from '../../../actions/pokemonDetailEvolution.action'
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Table,TableWrapper,Row,Rows,Col, Cols, Cell} from 'react-native-table-component';
-//import MovesetComponent from './moveset/moveset.component'
 import PokemonDetailStatsStyle from './pokemonDetailStats.style'
-//import TypesComponent from './types/types.component'
 import StatsComponent from './stats/stats.component'
-import {compose} from 'redux'
-import {connectRequest, entitiesReducer, queriesReducer, queryMiddleware, querySelectors} from 'redux-query';
 import EvolutionsComponent from './evolutions/evolutions.component';
 
 class PokemonDetailStatsComponent extends Component {
-    /*
-    static navigationOptions = ({ navigation }) => {
-        const { params } = navigation.state;
-
-        return {
-          title: 'sdafasdf', //params ? params.titleDetailPokemon: 'Default Screen Title',
-          headerStyle: { backgroundColor: 'red'},
-        }
-    };*/
-    /*
-    static navigationOptions = {
-        title: 'What to do today?',
-        headerStyle: {
-            backgroundColor: '#16a085'
-        },
-        headerTitleStyle: {
-            color: 'white'
-        }
-    }*/
-
-
-
-    // async componentDidMount() {
-        /*    const value = await AsyncStorage.getItem('titleDetailPokemon');
-        this
-            .props
-            .navigation
-            .setParams({titleDetailPokemon: value})*/
-   // }
-
     render() {
         const pokemon = this.props.pokemonDetail
 
         if (pokemon && pokemon.data && !pokemon.isRefreshing) {
-            //  AsyncStorage.setItem('titleDetailPokemon', pokemon.data.name)
-
             return (
                 <ScrollView>
                     <View style={PokemonDetailStatsStyle.containerImage}>

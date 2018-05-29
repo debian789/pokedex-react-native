@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import {View, Text} from 'react-native'
 import {connect} from 'react-redux'
-import {fetchDataList} from '../../../../actions/pokemonDetailMoveset.action'
-import {compose} from 'redux'
-import {connectRequest, entitiesReducer, queriesReducer, queryMiddleware, querySelectors} from 'redux-query';
+import {connectRequest} from 'redux-query';
 import MovesetStyle from './moveset.style'
 import constants from '../../../../commons/constants'
+
 class MovesetComponent extends Component {
   constructor(props) {
     super(props)
@@ -13,16 +12,11 @@ class MovesetComponent extends Component {
   }
 
   componentWillMount() {
-    // debugger
-    this.data = []
-    // this.props.detailMoves = []
-
+    this.data = []    
   }
 
   componentDidMount() {
     this.data = []
-
-    // this.props.namePokemon = undefined;
   }
 
   componentWillUnmount() {
@@ -30,69 +24,7 @@ class MovesetComponent extends Component {
   }
 
   render() {
-    // debugger if (this.props.detailMoves &&    this.props.detailMoves.count  && )
-    // { WS} tableData = []
-
-    tableHead = [
-      '',
-      '',
-      'ACC',
-      'PWR',
-      'PP',
-      ''
-    ]
-
-    //  debugger  if (this.props.detailMoves)  { this.props.detailMoves.map((item)
-    // => {
-
-    /*
-          if (this.props.detailMoves && this.props.detailMoves[this.props.namePokemon])  {
-            this.props.detailMoves[this.props.namePokemon].map((item) => {
-                if (item) {
-                    tableData.push(['', item.name,
-                    (item.accuracy ? `${item.accuracy}%`: '' ),
-                    (item.power || ''),
-                    (item.pp || ''),''])
-                }
-            })
-          }
-          */
-
-    /*
-        tableData: [
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12',''],
-              ['', 'zen', '90%', '80','12','']
-        ]*/
-    //tableHead = ['Head', 'Head2', 'Head3', 'Head4','',''] debugger
     if (!this.props.isLoading && this.props.detailMoves) {
-      //  debugger
-      /*this.data.push(
-      [
-        '',
-        this.props.detailMoves.name,
-        (this.props.detailMoves.accuracy
-          ? `${this.props.detailMoves.accuracy}%`
-          : ''),
-        (this.props.detailMoves.power || ''),
-        (this.props.detailMoves.pp || ''),
-        ''
-      ]
-
-
-      )
-      */
       this
         .data
         .push(this.props.detailMoves)
@@ -158,9 +90,7 @@ const movesRequest = connectRequest((props) => {
           }
         },
         force: true
-
       }
-
     })
 
 })(MovesetComponent)

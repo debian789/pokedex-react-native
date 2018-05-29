@@ -14,7 +14,6 @@ export default StyleSheet.create({
     },
     titleText: {
         fontSize: 17,
-        //fontWeight: 'bold',
         color: 'white'
     },
     containerImage: {
@@ -26,8 +25,6 @@ export default StyleSheet.create({
     containerHeaderImage: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        //borderWidth: 1,
-        //borderColor: 'red',
         margin:0,
         width:'100%'
     },
@@ -41,11 +38,8 @@ export default StyleSheet.create({
     },
     count: {
         flexDirection: 'row',
-        //borderWidth: 1,
-       //borderColor: 'red',
         justifyContent: 'flex-end',
         width: '100%',
-        //left: 0
     },
     countText: {        
         fontWeight: 'bold',
