@@ -15,7 +15,7 @@ export default NavigationReducers = (state=initialNavState, action) => {
     switch(action.type) {
         case constants.action.navegation.DETAIL_POKEMON:
             nextState = AppNavigator.router.getStateForAction(
-                NavigationActions.navigate({ routeName: 'PokemonDetailMovesTab', params: {url: action.url} }),
+                NavigationActions.navigate({ routeName: 'PokemonDetailMovesTab', params: {params: action.params} }),
                 state
             );
             break;

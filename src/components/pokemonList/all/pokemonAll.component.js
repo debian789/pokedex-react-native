@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, FlatList, Image, TouchableHighlight} from 'react-native'
 import {fetchDataList, updataDataSuccess} from '../../../actions'
-import {getUrl} from '../../../actions/pokemonDetail.action'
+import {setParams} from '../../../actions/navegation.action'
 import {connect} from 'react-redux'
 import constants from '../../../commons/constants'
 import PokemonAllStyle from './pokemonAll.style'
@@ -14,7 +14,7 @@ class PokemonAllComponent extends Component {
     }
     
     _navigationDetail(item, index) {
-        this.props.detailPokemon(item.url)
+        this.props.setParams({url:item.url})
     }
 
     _renderItem({item, index})  {
@@ -75,8 +75,8 @@ const mapDispatchToProps = dispatch => {
         fetchData: (offset, oldData) => {
             return dispatch(fetchDataList(constants.endpoinds.LIST_POKEMON, offset, oldData))
         },
-        detailPokemon: (url) => {
-           return dispatch(getUrl(url))
+        setParams: (params) => {
+           return dispatch(setParams(params))
         }
     }
 }

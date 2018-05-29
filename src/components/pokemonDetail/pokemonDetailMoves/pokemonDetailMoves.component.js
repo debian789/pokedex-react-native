@@ -10,9 +10,14 @@ import TypesComponent from './types/types.component'
 
 class PokemonDetailMovesComponent extends Component {
 
+
+
+
+
     static navigationOptions = ({ navigation }) => {
+        debugger
          return {
-        title: `${navigation.getParam('url')}`,
+        title: `${navigation.getParam('params').url}`,
          headerTitleStyle : {textAlign: 'center',alignSelf:'center'},
             headerStyle:{
                 backgroundColor:'blue',
@@ -20,16 +25,11 @@ class PokemonDetailMovesComponent extends Component {
         }
         };
 
-
-
-
-
-
     componentWillMount() {
         const url = this
             .props
             .navigation
-            .getParam('url');
+            .getParam('params').url;
 
             debugger
             if (url) {
