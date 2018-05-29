@@ -10,6 +10,12 @@ export default PokemonDetailEvolutionReducers = (state=initialState, action) => 
                 ...state,
                 isRefreshing: action.isRefreshing
             }
+        case constants.action.CLEAR_DETAIL_EVOLUTION_POKEMON:
+            return {
+                ...state,
+                data: action.data,
+                isRefreshing: action.isRefreshing
+            }
         case constants.action.GET_DETAIL_EVOLUTION_SUCCESS_POKEMON:
             return {
                 ...state,

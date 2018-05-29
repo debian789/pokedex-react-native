@@ -1,84 +1,115 @@
 import React, {Component} from 'react'
-import {View,Text,Image,ActivityIndicator} from 'react-native'
+import {View, Text, Image, ActivityIndicator} from 'react-native'
 import {NavigationActions} from 'react-navigation'
+import {clearData, fetchDataEvolution} from '../../../../actions/pokemonDetailEvolution.action'
 import {connect} from 'react-redux'
 import EvolutionStyle from './evolutions.style'
 import {compose} from 'redux'
 import constants from '../../../../commons/constants'
 
 const colors = constants.colors.dark_colors;
-let evolutions = []
 
 class EvolutionsComponent extends Component {
-
-    _getUrlImage(text) {
-        let list = text.split('/')
-        return constants.environment.URL_IMAGE(list[list.length - 2]);
+    
+    componentWillMount() {    
+        this.evolutions = []
+        this.props.clearData()
+        if (this.props.pokemonDetail.data) {
+            this.props.clearData()
+            this.props.fetchDataEvolution(this.props.pokemonDetail.data.id)
+        }
     }
 
-    _geEvolutions (item) {
-        // debugger
+    componentWillUnmount() {
+        this.evolutions = []
+    }
+   
+    _getUrlImage(text) {
+        let list = text.split('/')
+        return constants
+            .environment
+            .URL_IMAGE(list[list.length - 2]);
+    }
+
+    _geEvolutions(item) {
         if (item.list && item.list[0].evolves_to.length > 0) {
-
-            urlImage = this._getUrlImage(item.list[0].species.url)
-
+            let urlImage = this._getUrlImage(item.list[0].species.url)
             return this._geEvolutions({
                 list: item.list[0].evolves_to,
-                data:  [...item.data,
-                {
-                    name: item.list[0].species.name,
-                    urlImage
+                data: [
+                    ...item.data, {
+                        name: item.list[0].species.name,
+                        urlImage
                     }
                 ]
-                })
+            })
         } else {
-            //return list[0].species.name
-           return  {
+            let urlImage = this._getUrlImage(item.list[0].species.url)
+            return {
                 list: item.list[0].evolves_to,
-                data:  [...item.data, {
-                    name: item.list[0].species.name,
-                    urlImage
-                    }]                    
+                data: [
+                    ...item.data, {
+                        name: item.list[0].species.name,
+                        urlImage
+                    }
+                ]
             }
-
         }
     }
 
     render() {
-        //const pokemon = this.props.detailPokemon
         const pokemonDetailEvolution = this.props.pokemonDetailEvolution
-
-        if (pokemonDetailEvolution && pokemonDetailEvolution.data) {
-            //  AsyncStorage.setItem('titleDetailPokemon', pokemon.data.name)
-            if (pokemonDetailEvolution.data.chain && pokemonDetailEvolution.data.chain.evolves_to ) {
-                evolutions.push({
-                    name:pokemonDetailEvolution.data.chain.species.name,
-                    urlImage:this._getUrlImage(pokemonDetailEvolution.data.chain.species.url)
+        this.evolutions = [];
+        if (pokemonDetailEvolution && pokemonDetailEvolution.data && !pokemonDetailEvolution.isRefreshing) {
+            if (pokemonDetailEvolution.data.chain && pokemonDetailEvolution.data.chain.evolves_to) {
+                this.evolutions.push({
+                    name: pokemonDetailEvolution.data.chain.species.name,
+                    urlImage: this._getUrlImage(pokemonDetailEvolution.data.chain.species.url)
                 })
-                evolutions.push(...this._geEvolutions({list:pokemonDetailEvolution.data.chain.evolves_to,data:[]}).data)   
+                this.evolutions.push(...this._geEvolutions({list: pokemonDetailEvolution.data.chain.evolves_to, data: []}).data)
             }
+            
+            return (
+                <View style={EvolutionStyle.container}>
+                    {this.evolutions.map((item, index) => {
+                        return (
+                            <View key={index} style={[EvolutionStyle.itemEvolution, {backgroundColor: constants.colors.dark_colors[index]}]}>
+                                <Image
+                                    style={EvolutionStyle.imgPokemon}
+                                    source={{
+                                    uri: item.urlImage
+                                }}/>
+                                <Text style={EvolutionStyle.itemText}>{item.name}</Text>
+                            </View>
+                        )
+                    })
+}
+                </View>
+            )
 
-            return evolutions.map((item, index) => {
-                debugger
-                return (<View key={index}><Text>{item.name}</Text></View>)
-            })
-
-           
-           
-           
         } else {
             return (<ActivityIndicator size="large" color="#0000ff"/>)
         }
-
     }
 }
 
-
 const mapStateToProps = (state) => {
-    return {navigation2: state.nav, 
-        pokemonDetail: state.pokemonDetail,
+    return {
+        navigation2: state.nav, 
+        pokemonDetail: state.pokemonDetail, 
         pokemonDetailEvolution: state.pokemonDetailEvolution
     }
 }
 
-export default connect(mapStateToProps)(EvolutionsComponent)
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchDataEvolution: (id) => {
+            return dispatch(fetchDataEvolution(id))
+        },
+        clearData: () => {
+            return dispatch(clearData())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EvolutionsComponent)

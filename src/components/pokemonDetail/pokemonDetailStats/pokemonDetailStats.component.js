@@ -1,15 +1,8 @@
 import React, {Component} from 'react'
-import {
-    View,
-    Text,
-    Image,
-    ScrollView,
-    ActivityIndicator,
-    AsyncStorage
-} from 'react-native'
+import {    View,    Text,    Image,    ScrollView,    ActivityIndicator,    AsyncStorage} from 'react-native'
 import {NavigationActions} from 'react-navigation'
 import {connect} from 'react-redux'
-import {fetchDataEvolution, getData} from '../../../actions/pokemonDetailEvolution.action'
+import {fetchDataEvolution,clearData, getData} from '../../../actions/pokemonDetailEvolution.action'
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Table,TableWrapper,Row,Rows,Col, Cols, Cell} from 'react-native-table-component';
 //import MovesetComponent from './moveset/moveset.component'
@@ -41,19 +34,7 @@ class PokemonDetailStatsComponent extends Component {
         }
     }*/
 
-    componentWillMount() {
-    // debugger
-       // this
-       //     .props
-       //     .fetchData(url)
-    }
 
-    componentWillReceiveProps () {
-        if (this.props.pokemonDetail.data) {
-            this.props.fetchDataEvolution(this.props.pokemonDetail.data.id)
-        }
-    }
-    
 
     // async componentDidMount() {
         /*    const value = await AsyncStorage.getItem('titleDetailPokemon');
@@ -64,10 +45,9 @@ class PokemonDetailStatsComponent extends Component {
    // }
 
     render() {
-        //const pokemon = this.props.detailPokemon
         const pokemon = this.props.pokemonDetail
 
-        if (pokemon && pokemon.data) {
+        if (pokemon && pokemon.data && !pokemon.isRefreshing) {
             //  AsyncStorage.setItem('titleDetailPokemon', pokemon.data.name)
 
             return (
@@ -114,40 +94,8 @@ class PokemonDetailStatsComponent extends Component {
         } else {
             return (<ActivityIndicator size="large" color="#0000ff"/>)
         }
-
     }
 }
-
-/*
-const pokemonDetailRequest = connectRequest((props) => {
-
-    return {
-      url: props.navigation.getParam('url'),
-      transform: body => ({
-        detailPokemon: body,
-      }),
-      update: {
-        detailPokemon: (prev, next) => {
-          return next;
-        },
-      },
-      force:true
-
-  }
-})(PokemonDetailStatsComponent)
-
-
-
-const selectPokemons = state => {
-    return state.entities.detailPokemon || undefined;
-  };
-
-
-
-export default connect(state => ({
-    detailPokemon: selectPokemons(state),
-    }))(pokemonDetailRequest)
-*/
 
 const mapStateToProps = (state) => {
     return {
@@ -156,13 +104,15 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = distpatch => {
+const mapDispatchToProps = dispatch => {
     return {
         fetchDataEvolution: (id) => {
-            return distpatch(fetchDataEvolution(id))
+            return dispatch(fetchDataEvolution(id))
+        },
+        clearData: () => {
+            return dispatch(clearData())
         }
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetailStatsComponent)

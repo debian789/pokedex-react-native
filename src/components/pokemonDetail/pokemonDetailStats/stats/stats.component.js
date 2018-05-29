@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View,Text,Image,ActivityIndicator} from 'react-native'
+import {View,Text,ActivityIndicator} from 'react-native'
 import {NavigationActions} from 'react-navigation'
 import {connect} from 'react-redux'
 import StatsStyle from './stats.style'
