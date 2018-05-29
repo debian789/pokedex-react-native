@@ -13,23 +13,29 @@ class PokemonAllComponent extends Component {
         this.props.fetchData(constants.environment.PAGINATION.offset)
     }
     
-    _navigationDetail(item, index) {
-        this.props.setParams({url:item.url, name: item.name})
+    _navigationDetail(item, colors, index) {
+        this.props.setParams({url:item.url, name: item.name, colors})
     }
 
+
     _renderItem({item, index})  {
-        const randomColorA = 123//Math.floor(Math.random() * (240 - 180 +1) + 180)            
-        const randomColorB = 210//Math.floor(Math.random() * (220 - 160 +1) + 160)            
-        const randomColorC = 140//Math.floor(Math.random() * (240 - 160 +1) + 160)    
+        const randomColorA = Math.floor(Math.random() * (240 - 180 +1) + 180)            
+        const randomColorB = Math.floor(Math.random() * (220 - 160 +1) + 160)            
+        const randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160) 
+        
+        //const randomColorA = 123//Math.floor(Math.random() * (240 - 180 +1) + 180)            
+        //const randomColorB = 210//Math.floor(Math.random() * (220 - 160 +1) + 160)            
+        //const randomColorC = 140//Math.floor(Math.random() * (240 - 160 +1) + 160) 
+
 
         let idPokemon = item.url.split('/')
         idPokemon = idPokemon[idPokemon.length-2]
-        
+
         return <View style={[PokemonAllStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
             <View style={PokemonAllStyle.head}></View>   
             <View style={PokemonAllStyle.body}>
                 <TouchableHighlight
-                    onPress={this._navigationDetail.bind(this, item, index)}
+                    onPress={this._navigationDetail.bind(this, item, {colorA: randomColorA, colorB:randomColorB , colorC:randomColorC }, index)}
                 >
                     <Image style={PokemonAllStyle.itemImage} 
                         source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`}}

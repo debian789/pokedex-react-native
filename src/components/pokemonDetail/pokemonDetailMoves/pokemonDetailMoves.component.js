@@ -11,11 +11,15 @@ import TypesComponent from './types/types.component'
 class PokemonDetailMovesComponent extends Component {
 
     static navigationOptions = ({ navigation }) => {
+        const randomColorA = navigation.getParam('params').colors.colorA - 35
+        const randomColorB = navigation.getParam('params').colors.colorB - 35
+        const randomColorC = navigation.getParam('params').colors.colorC - 35
+
         return {
             title: `${navigation.getParam('params').name}`,
-            headerTitleStyle : {textAlign: 'center',alignSelf:'center'},
+            headerTitleStyle : {textAlign: 'center',alignSelf:'center', color: 'white'},
                 headerStyle:{
-                    backgroundColor:'blue',
+                    backgroundColor:`rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`,
                 },
             }
         };
@@ -26,22 +30,24 @@ class PokemonDetailMovesComponent extends Component {
             .navigation
             .getParam('params').url;
 
-            debugger
             if (url) {
                 this
                     .props
                     .fetchData(url)
-
             }
     }
 
     render() {
         const pokemon = this.props.pokemonDetail
-
         if (pokemon && pokemon.data) {
+
+            const randomColorA = this.props.navigation.getParam('params').colors.colorA
+            const randomColorB = this.props.navigation.getParam('params').colors.colorB
+            const randomColorC = this.props.navigation.getParam('params').colors.colorC
+
             return (
                 <ScrollView>
-                    <View style={PokemonDetailMovesStyle.containerImage}>
+                    <View style={[PokemonDetailMovesStyle.containerImage, {backgroundColor:`rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
                         <View style={PokemonDetailMovesStyle.containerHeaderImage}>
                             <Image
                                 style={PokemonDetailMovesStyle.pokeball}
@@ -59,7 +65,7 @@ class PokemonDetailMovesComponent extends Component {
                             <Text style={PokemonDetailMovesStyle.countText}>{pokemon.data.id}</Text>
                         </View>
                     </View>
-                    <View style={PokemonDetailMovesStyle.title}>
+                    <View style={[PokemonDetailMovesStyle.title, {backgroundColor: `rgb(${randomColorA - 35}, ${randomColorB - 35}, ${randomColorC -35})`}]}>
                         <Text style={PokemonDetailMovesStyle.titleText}>MOVERSET</Text>
                     </View>
                     <View style={PokemonDetailMovesStyle.containerMovesets}>
@@ -88,7 +94,7 @@ class PokemonDetailMovesComponent extends Component {
                             moves={pokemon.data.moves}
                             namePokemon={pokemon.data.name}/>
                     </View>
-                    <View style={PokemonDetailMovesStyle.title}>
+                    <View style={[PokemonDetailMovesStyle.title, {backgroundColor: `rgb(${randomColorA - 35}, ${randomColorB - 35}, ${randomColorC -35})`}]}>
                         <Text style={PokemonDetailMovesStyle.titleText}>TYPE CONVERAGE (8)
                         </Text>
                     </View>
