@@ -6,6 +6,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import PokemonDetailStatsStyle from './pokemonDetailStats.style'
 import StatsComponent from './stats/stats.component'
 import EvolutionsComponent from './evolutions/evolutions.component';
+import constants from '../../../commons/constants'
+
+const COLOR_DIFFERENCE = constants.environment.COLOR_DIFFERENCE;
 
 class PokemonDetailStatsComponent extends Component {
 
@@ -14,15 +17,20 @@ class PokemonDetailStatsComponent extends Component {
         const pokemon = this.props.pokemonDetail
 
         if (pokemon && pokemon.data && !pokemon.isRefreshing) {
-           
+            debugger
+            const randomColorA = this.props.navigationParameter.params.colors.colorA
+            const randomColorB = this.props.navigationParameter.params.colors.colorB
+            const randomColorC = this.props.navigationParameter.params.colors.colorC
+
+
 
             return (
-                <View>
-<View>
-    <View><Text>Back</Text></View>
-    <View><Text>title</Text></View>
-</View>
-                <ScrollView>
+                <View style={PokemonDetailStatsStyle.containerAll}>
+                <View style={[PokemonDetailStatsStyle.head,{backgroundColor: `rgb(${randomColorA - COLOR_DIFFERENCE}, ${randomColorB - COLOR_DIFFERENCE}, ${randomColorC - COLOR_DIFFERENCE})`}]}>
+                    <View style={PokemonDetailStatsStyle.btnBack}><Text>Back</Text></View>
+                    <View style={PokemonDetailStatsStyle.headTitle} ><Text style={PokemonDetailStatsStyle.headTitleText}>title</Text></View>
+                </View>
+                <ScrollView style={PokemonDetailStatsStyle.containerScroll}>
                     <View style={PokemonDetailStatsStyle.containerImage}>
                         <View style={PokemonDetailStatsStyle.containerHeaderImage}>
                             <Image

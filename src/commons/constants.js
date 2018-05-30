@@ -5,7 +5,8 @@ export default {
         PAGINATION: {
             limit: 20,
             offset: 0
-        }
+        },
+        COLOR_DIFFERENCE: 35        
     },
     endpoinds: {
         LIST_POKEMON: (offset) => `pokemon/?limit=40&offset=${offset}`

@@ -52,5 +52,33 @@ export default StyleSheet.create({
     containerStats: {
         marginBottom: 10,
         marginTop: 10,
+    },
+    head: {
+        //flex:1,
+        flexDirection: 'row',
+        borderColor: 'red',
+        borderWidth: 1,
+        height: 56,
+        justifyContent:'center',
+        alignItems: 'center'
+
+    },
+    btnBack: {
+
+    },
+    headTitle: {
+
+    },
+    headTitleText: {
+
+    },
+    containerScroll: {
+        flex: 1,
+        borderColor: 'blue',
+        borderWidth: 1,
+    },
+    containerAll: {
+        flex: 1
     }
+
 })
