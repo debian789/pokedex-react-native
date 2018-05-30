@@ -33,6 +33,7 @@ export default {
         UPDATE_LIST_SUCCESS_POKEMON: 'UPDATE_LIST_SUCCESS_POKEMON',        
         navegation: {
             GET_CONTEXT_NAVIGATION:'GET_CONTEXT_NAVIGATION',
+            MAIN: 'MAIN',
             DETAIL_POKEMON:'DETAIL_POKEMON',
             SET_PARAMETER: 'SET_PARAMETER',
             GET_PARAMETER: 'GET_PARAMETER',

@@ -56,12 +56,13 @@ export default StyleSheet.create({
     head: {
         flexDirection: 'row',
         height: 56,
-        alignItems: 'center'
-        
+        alignItems: 'center'        
     },
     btnBack: {
-        paddingLeft: 10,
-        paddingRight: 10,
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingBottom: 5,
+        paddingTop: 5,       
     },
     iconBack: {
         color: 'white',

@@ -15,3 +15,7 @@ export const getParameters = () => {
 export const clearParameters = () => {
     return {type: constants.action.navegation.CLEAR_PARAMETER}
 }
+
+export const main = () => {
+    return {type: constants.action.navegation.MAIN}
+}

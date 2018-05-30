@@ -19,6 +19,15 @@ export default NavigationReducers = (state=initialNavState, action) => {
                 state
             );
             break;
+
+        case constants.action.navegation.MAIN:
+            nextState = AppNavigator.router.getStateForAction(
+                NavigationActions.navigate({ routeName: 'Primary'}),
+                state
+            );
+            break;
+        
+        
         default:
             nextState = AppNavigator.router.getStateForAction(action, state);
     }
