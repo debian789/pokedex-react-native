@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {View, Text, Image, ScrollView, ActivityIndicator, AsyncStorage} from 'react-native'
 import {connect} from 'react-redux'
 import {fetchDataList, getData} from '../../../actions/pokemonDetail.action'
+import {clearParameters} from '../../../actions/navegation.action'
 import Icon from 'react-native-vector-icons/Ionicons';
 import PokemonDetailMovesStyle from './pokemonDetailMoves.style'
 import MovesetComponent from './moveset/moveset.component'
@@ -110,7 +111,9 @@ class PokemonDetailMovesComponent extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {navigation2: state.nav, pokemonDetail: state.pokemonDetail}
+    return {navigation2: state.nav, 
+        pokemonDetail: state.pokemonDetail
+    }
 }
 
 const mapDispatchToProps = dispatch => {

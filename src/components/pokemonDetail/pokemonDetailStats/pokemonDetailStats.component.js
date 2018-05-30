@@ -8,11 +8,20 @@ import StatsComponent from './stats/stats.component'
 import EvolutionsComponent from './evolutions/evolutions.component';
 
 class PokemonDetailStatsComponent extends Component {
+
+
     render() {
         const pokemon = this.props.pokemonDetail
 
         if (pokemon && pokemon.data && !pokemon.isRefreshing) {
+           
+
             return (
+                <View>
+<View>
+    <View><Text>Back</Text></View>
+    <View><Text>title</Text></View>
+</View>
                 <ScrollView>
                     <View style={PokemonDetailStatsStyle.containerImage}>
                         <View style={PokemonDetailStatsStyle.containerHeaderImage}>
@@ -52,6 +61,8 @@ class PokemonDetailStatsComponent extends Component {
                         <EvolutionsComponent/>
                     </View>
                 </ScrollView>
+
+                </View>
             )
         } else {
             return (<ActivityIndicator size="large" color="#0000ff"/>)
@@ -62,7 +73,8 @@ class PokemonDetailStatsComponent extends Component {
 const mapStateToProps = (state) => {
     return {
         navigation2: state.nav, 
-        pokemonDetail: state.pokemonDetail
+        pokemonDetail: state.pokemonDetail,
+        navigationParameter: state.navigationParameter
     }
 }
 

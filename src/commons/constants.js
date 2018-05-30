@@ -33,6 +33,9 @@ export default {
         navegation: {
             GET_CONTEXT_NAVIGATION:'GET_CONTEXT_NAVIGATION',
             DETAIL_POKEMON:'DETAIL_POKEMON',
+            SET_PARAMETER: 'SET_PARAMETER',
+            GET_PARAMETER: 'GET_PARAMETER',
+            CLEAR_PARAMETER: 'CLEAR_PARAMETER'
         }
     },
     colors: {
