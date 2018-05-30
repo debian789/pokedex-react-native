@@ -52,5 +52,14 @@ export default StyleSheet.create({
     containerMovesets: {
         marginTop: 5,
         marginBottom: 10,
+    },
+    btnBack: {
+        fontSize: 25,
+        color: 'white',
+        paddingLeft: 12,
+        paddingRight: 3,
+        paddingBottom: 5,
+        paddingTop: 5, 
     }
+
 })

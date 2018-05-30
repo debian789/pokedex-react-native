@@ -20,10 +20,6 @@ const COLOR_DIFFERENCE = constants.environment.COLOR_DIFFERENCE;
 
 class PokemonDetailStatsComponent extends Component {
 
-    _back() {
-        
-    }
-
     render() {
         const pokemon = this.props.pokemonDetail
 
@@ -54,7 +50,7 @@ class PokemonDetailStatsComponent extends Component {
                             
                         </View>
                         <View style={PokemonDetailStatsStyle.headTitle}>
-                            <Text style={PokemonDetailStatsStyle.headTitleText}>title</Text>
+                            <Text style={PokemonDetailStatsStyle.headTitleText}>{this.props.navigationParameter.params.name}</Text>
                         </View>
                     </View>
                     <ScrollView style={PokemonDetailStatsStyle.containerScroll}>
