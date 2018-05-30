@@ -34,7 +34,7 @@ const PokemonDetailMovesNavegation = StackNavigator({
 }, {
     headerMode: 'screen',
     initialRouteName: 'PokemonDetailMovesTab',
-    showBack: false,
+    showBack: false,    
 })
 
 const PokemonDetailStatsNavegation = StackNavigator({
@@ -48,7 +48,7 @@ const PokemonDetailStatsNavegation = StackNavigator({
 const PokemonDetailLocationNavegation = StackNavigator({
   PokemonDetailLocationTab: {screen: PokemonDetailLocationComponent},
 }, {
-    headerMode: 'screen',
+    headerMode: 'none',
     initialRouteName: 'PokemonDetailLocationTab',
     showBack: false,
 })

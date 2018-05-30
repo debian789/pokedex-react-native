@@ -23,6 +23,9 @@ class PokemonDetailMovesComponent extends Component {
             title: `${navigation.getParam('params').name}`,
             headerTitleStyle : {textAlign: 'center',alignSelf:'center', color: 'white'},
                 headerStyle:{
+                        elevation: 0,
+                        shadowOpacity: 0,
+                      
                     backgroundColor:`rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`,
                 },
             }

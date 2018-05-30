@@ -54,28 +54,33 @@ export default StyleSheet.create({
         marginTop: 10,
     },
     head: {
-        //flex:1,
         flexDirection: 'row',
-        borderColor: 'red',
-        borderWidth: 1,
         height: 56,
+        alignItems: 'center'
+        
+    },
+    btnBack: {
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    iconBack: {
+        color: 'white',
+        fontSize: 25
+    },
+    headTitle: {
+        flex: 1,
         justifyContent:'center',
         alignItems: 'center'
 
     },
-    btnBack: {
-
-    },
-    headTitle: {
-
-    },
     headTitleText: {
-
+        justifyContent: 'center',
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold'
     },
     containerScroll: {
         flex: 1,
-        borderColor: 'blue',
-        borderWidth: 1,
     },
     containerAll: {
         flex: 1

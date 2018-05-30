@@ -22,16 +22,21 @@ class PokemonDetailStatsComponent extends Component {
             const randomColorB = this.props.navigationParameter.params.colors.colorB
             const randomColorC = this.props.navigationParameter.params.colors.colorC
 
-
-
             return (
                 <View style={PokemonDetailStatsStyle.containerAll}>
-                <View style={[PokemonDetailStatsStyle.head,{backgroundColor: `rgb(${randomColorA - COLOR_DIFFERENCE}, ${randomColorB - COLOR_DIFFERENCE}, ${randomColorC - COLOR_DIFFERENCE})`}]}>
-                    <View style={PokemonDetailStatsStyle.btnBack}><Text>Back</Text></View>
+                <View style={[PokemonDetailStatsStyle.head,
+                    {backgroundColor: `rgb(${randomColorA - COLOR_DIFFERENCE}, ${randomColorB - COLOR_DIFFERENCE}, ${randomColorC - COLOR_DIFFERENCE})`}]}>
+                    <View style={PokemonDetailStatsStyle.btnBack}>
+                    
+                    <Icon
+                                name="md-arrow-round-back"
+                                style={PokemonDetailStatsStyle.iconBack}/>
+                   
+                    </View>
                     <View style={PokemonDetailStatsStyle.headTitle} ><Text style={PokemonDetailStatsStyle.headTitleText}>title</Text></View>
                 </View>
                 <ScrollView style={PokemonDetailStatsStyle.containerScroll}>
-                    <View style={PokemonDetailStatsStyle.containerImage}>
+                    <View style={[PokemonDetailStatsStyle.containerImage, {backgroundColor: `rgb(${randomColorA }, ${randomColorB}, ${randomColorC})`}]}>
                         <View style={PokemonDetailStatsStyle.containerHeaderImage}>
                             <Image
                                 style={PokemonDetailStatsStyle.pokeball}
@@ -49,7 +54,7 @@ class PokemonDetailStatsComponent extends Component {
                             <Text style={PokemonDetailStatsStyle.countText}>{pokemon.data.id}</Text>
                         </View>
                     </View>
-                    <View style={PokemonDetailStatsStyle.title}>
+                    <View style={[PokemonDetailStatsStyle.title, {backgroundColor: `rgb(${randomColorA - COLOR_DIFFERENCE}, ${randomColorB - COLOR_DIFFERENCE}, ${randomColorC - COLOR_DIFFERENCE})`}]}>
                     <Text style={PokemonDetailStatsStyle.titleText}>                
                         {
                             pokemon.data.types.map((type, index) => {
@@ -61,7 +66,7 @@ class PokemonDetailStatsComponent extends Component {
                     <View style={PokemonDetailStatsStyle.containerStats}>
                         <StatsComponent/>
                     </View>
-                    <View style={PokemonDetailStatsStyle.title}>
+                    <View style={[PokemonDetailStatsStyle.title, {backgroundColor: `rgb(${randomColorA - COLOR_DIFFERENCE}, ${randomColorB - COLOR_DIFFERENCE}, ${randomColorC - COLOR_DIFFERENCE})`}]}>
                         <Text style={PokemonDetailStatsStyle.titleText}>Evolution
                         </Text>
                     </View>
