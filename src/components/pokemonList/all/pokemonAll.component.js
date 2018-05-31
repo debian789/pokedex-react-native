@@ -8,7 +8,18 @@ import constants from '../../../commons/constants'
 import PokemonAllStyle from './pokemonAll.style'
 import {NavigationActions} from 'react-navigation'
 
+
 class PokemonAllComponent extends Component {
+    constructor(props) {
+        super(props)
+        this.contador = 0;
+        this.rgbList = constants.colors.rgbList
+        this.countRgbList = this.rgbList.length;
+        this.randomColorA = this.rgbList[this.contador][0];
+        this.randomColorB = this.rgbList[this.contador][1];
+        this.randomColorC = this.rgbList[this.contador][2];
+        
+    }
 
     componentWillMount() {
         this.props.fetchData(constants.environment.PAGINATION.offset)
@@ -21,25 +32,47 @@ class PokemonAllComponent extends Component {
 
     }
 
+    _getPositionColor(index, countList) {
+        if (index < countList) {
+            return index 
+        } else {
+            cuadrante = Math.trunc(index/countList)
+            return index - (countList * cuadrante) 
+        }
+    }
+
+
 
     _renderItem({item, index})  {
-        const randomColorA = Math.floor(Math.random() * (240 - 180 +1) + 180)            
-        const randomColorB = Math.floor(Math.random() * (220 - 160 +1) + 160)            
-        const randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160) 
+        //const this.randomColorA = Math.floor(Math.random() * (240 - 180 +1) + 180)            
+        //const this.randomColorB = Math.floor(Math.random() * (220 - 160 +1) + 160)            
+        //const this.randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160) 
+      
+
+// debugger
+
+if (this.rgbList[this.contador] && this.rgbList[this.contador][0]) {
+    this.contador = this._getPositionColor(index, this.countRgbList);
+
+    this.randomColorA  = this.rgbList[this.contador][0]
+    this.randomColorB  = this.rgbList[this.contador][1]
+    this.randomColorC  = this.rgbList[this.contador][2]
+}
         
-        //const randomColorA = 123//Math.floor(Math.random() * (240 - 180 +1) + 180)            
-        //const randomColorB = 210//Math.floor(Math.random() * (220 - 160 +1) + 160)            
-        //const randomColorC = 140//Math.floor(Math.random() * (240 - 160 +1) + 160) 
+        //console.log(this.randomColorA)
+        //const this.randomColorA = 123//Math.floor(Math.random() * (240 - 180 +1) + 180)            
+        //const this.randomColorB = 210//Math.floor(Math.random() * (220 - 160 +1) + 160)            
+        //const this.randomColorC = 140//Math.floor(Math.random() * (240 - 160 +1) + 160) 
 
 
         let idPokemon = item.url.split('/')
         idPokemon = idPokemon[idPokemon.length-2]
 
-        return <View style={[PokemonAllStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
+        return <View  key={index} style={[PokemonAllStyle.item, {backgroundColor: `rgb(${this.randomColorA}, ${this.randomColorB}, ${this.randomColorC})`}]}>
             <View style={PokemonAllStyle.head}></View>   
             <View style={PokemonAllStyle.body}>
                 <TouchableHighlight
-                    onPress={this._navigationDetail.bind(this, item, {colorA: randomColorA, colorB:randomColorB , colorC:randomColorC }, index)}
+                    onPress={this._navigationDetail.bind(this, item, {colorA: this.randomColorA, colorB:this.randomColorB , colorC:this.randomColorC }, index)}
                 >
                     <Image style={PokemonAllStyle.itemImage} 
                         source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`}}
@@ -74,7 +107,8 @@ class PokemonAllComponent extends Component {
             renderItem= {this._renderItem.bind(this)}
             refreshing= {pokemons.isRefreshing}
             onEndReached={() => {return this._handleLoadMore.bind(this)()}}
-            onRefresh= {this._handleRefresh}           
+            onRefresh= {this._handleRefresh}          
+            keyExtractor={(item, index) => index} 
         ></FlatList>)
     }
 }

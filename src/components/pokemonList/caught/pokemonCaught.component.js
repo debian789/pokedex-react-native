@@ -16,7 +16,7 @@ class PokemonCaughtComponent extends Component {
         const randomColorB = Math.floor(Math.random() * (220 - 160 +1) + 160)            
         const randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160)            
 
-        return <View style={[PokemonCaughtStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
+        return <View key={index} style={[PokemonCaughtStyle.item, {backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}]}>
             <View style={PokemonCaughtStyle.head}></View>   
             <View style={PokemonCaughtStyle.body}>
                 <Image style={PokemonCaughtStyle.itemImage} 
@@ -48,7 +48,8 @@ class PokemonCaughtComponent extends Component {
             renderItem= {this._renderItem}
             refreshing= {pokemons.isRefreshing}
             onEndReached={() => {return this._handleLoadMore.bind(this)()}}
-            onRefresh= {this._handleRefresh}           
+            onRefresh= {this._handleRefresh}    
+            keyExtractor={(item, index) => index}           
         ></FlatList>)
     }
 }
