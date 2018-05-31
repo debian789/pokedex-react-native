@@ -22,8 +22,9 @@ class PokemonAllComponent extends Component {
     }
 
     componentWillMount() {
-        debugger
-        this.props.fetchData(constants.environment.PAGINATION.offset)
+        if (!this.props.pokemons.isRefreshing) { 
+            this.props.fetchData(constants.environment.PAGINATION.offset)
+        }
     }
     
     _navigationDetail(item, colors, index) {
@@ -82,8 +83,9 @@ class PokemonAllComponent extends Component {
     }
 
     _handleLoadMore() {
-        debugger
-        this.props.fetchData(this.props.pokemons.offset, this.props.pokemons.data)
+        if (!this.props.pokemons.isRefreshing) {
+            this.props.fetchData(this.props.pokemons.offset, this.props.pokemons.data)
+        }
     }
 
     render() {
@@ -95,7 +97,7 @@ class PokemonAllComponent extends Component {
             extraData={this.props}
             renderItem= {this._renderItem.bind(this)}
             refreshing= {pokemons.isRefreshing}
-            onEndReached={() => {return this._handleLoadMore.bind(this)()}}
+            onEndReached={this._handleLoadMore.bind(this)}
             onRefresh= {this._handleRefresh}          
             keyExtractor={(item, index) => index} 
         ></FlatList>)
