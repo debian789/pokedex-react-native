@@ -22,6 +22,7 @@ class PokemonAllComponent extends Component {
     }
 
     componentWillMount() {
+        debugger
         this.props.fetchData(constants.environment.PAGINATION.offset)
     }
     
@@ -81,6 +82,7 @@ class PokemonAllComponent extends Component {
     }
 
     _handleLoadMore() {
+        debugger
         this.props.fetchData(this.props.pokemons.offset, this.props.pokemons.data)
     }
 
