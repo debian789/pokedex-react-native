@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {
     View,
-    TouchableHighlight,
+    TouchableOpacity,
     Text,
     Image,
     ScrollView,
@@ -54,11 +54,11 @@ class PokemonDetailMovesComponent extends Component {
                 backgroundColor: `rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`
             },
             headerLeft: (
-                <TouchableHighlight
+                <TouchableOpacity
                     onPress={() => navigation.navigate('Primary')}
                     underlayColor={`rgb(${randomColorA}, ${randomColorB}, ${randomColorC})`}>
                     <Icon name="md-arrow-round-back" style={PokemonDetailMovesStyle.btnBack}/>
-                </TouchableHighlight>
+                </TouchableOpacity>
             )
         }
     };

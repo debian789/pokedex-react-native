@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, FlatList, Image, TouchableHighlight} from 'react-native'
+import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native'
 import {fetchDataList, updataDataSuccess} from '../../../actions'
 import {setParameters, getParameters} from '../../../actions/navegation.action'
 import {sendParametersByNavigation} from '../../../actions/navegation.action'
@@ -7,6 +7,8 @@ import {connect} from 'react-redux'
 import constants from '../../../commons/constants'
 import PokemonAllStyle from './pokemonAll.style'
 import {NavigationActions} from 'react-navigation'
+import { YellowBox } from 'react-native';
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
 
 class PokemonAllComponent extends Component {
@@ -60,13 +62,13 @@ class PokemonAllComponent extends Component {
         return <View  key={index} style={[PokemonAllStyle.item, {backgroundColor: `rgb(${this.randomColorA}, ${this.randomColorB}, ${this.randomColorC})`}]}>
             <View style={PokemonAllStyle.head}></View>   
             <View style={PokemonAllStyle.body}>
-                <TouchableHighlight
+                <TouchableOpacity
                     onPress={this._navigationDetail.bind(this, item, {colorA: this.randomColorA, colorB:this.randomColorB , colorC:this.randomColorC }, index)}
                 >
                     <Image style={PokemonAllStyle.itemImage} 
                         source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`}}
                     />
-                </TouchableHighlight>
+                </TouchableOpacity>
             </View>  
             <View style={PokemonAllStyle.bottom}>
                 <Text style={PokemonAllStyle.name}>{item.name.toLowerCase()}</Text>

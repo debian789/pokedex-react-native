@@ -5,6 +5,9 @@ import {connect} from 'react-redux'
 import constants from '../../../commons/constants'
 import PokemonCaughtStyle from './pokemonCaught.style'
 
+import { YellowBox } from 'react-native';
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+
 class PokemonCaughtComponent extends Component {
 
     componentWillMount() {

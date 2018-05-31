@@ -9,6 +9,10 @@ class MovesetComponent extends Component {
   constructor(props) {
     super(props)
     this.data = []
+    this.contador = 0;
+    this.colorBase = constants.colors.light_colors
+    this.countColorBase = this.colorBase.length;
+
   }
 
   componentWillMount() {
@@ -23,6 +27,16 @@ class MovesetComponent extends Component {
     this.props.moves = undefined
   }
 
+  _getPositionColor(index, countList) {
+    if (index < countList) {
+        return index 
+    } else {
+        cuadrante = Math.trunc(index/countList)
+        return index - (countList * cuadrante) 
+    }
+  }
+
+
   render() {
     if (!this.props.isLoading && this.props.detailMoves) {
       this
@@ -34,11 +48,17 @@ class MovesetComponent extends Component {
         return this
         .data
         .map((item, index) => {
+
+            this.contador = this._getPositionColor(index, this.countColorBase);
+            debugger 
+            const background = {
+              backgroundColor: this.colorBase[this.contador]
+            }
+        
+
+
           let randNumber = Math.floor(Math.random() * colorBase.length);
        
-          const background = {
-            backgroundColor: colorBase[randNumber]
-          }
 
           return (
             <View key={index} style={MovesetStyle.containerRow}>
