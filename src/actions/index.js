@@ -19,7 +19,7 @@ export const updataDataSuccess = (oldData, newData) => {
 }
 
 export const getNextOffset = (offset) => {
-    const next = offset + 10
+    const next = offset + constants.environment.PAGINATION.limit
     return {type: constants.action.GET_NEXT_OFFSET, offset: next}
 }
 
@@ -27,7 +27,7 @@ export const fetchDataList= (url, offset, oldData) => {
     return (dispatch) => {
         dispatch(getData())
         dispatch(getNextOffset(offset))
-    
+
         fetchDataServices(`${constants.environment.URL_SERVICES}${url(offset)}`)
         .then(([response, json]) => {            
             if (oldData && oldData.length > 0) {

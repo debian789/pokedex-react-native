@@ -44,26 +44,13 @@ class PokemonAllComponent extends Component {
 
 
     _renderItem({item, index})  {
-        //const this.randomColorA = Math.floor(Math.random() * (240 - 180 +1) + 180)            
-        //const this.randomColorB = Math.floor(Math.random() * (220 - 160 +1) + 160)            
-        //const this.randomColorC = Math.floor(Math.random() * (240 - 160 +1) + 160) 
-      
+        if (this.rgbList[this.contador] && this.rgbList[this.contador][0]) {
+            this.contador = this._getPositionColor(index, this.countRgbList);
 
-// debugger
-
-if (this.rgbList[this.contador] && this.rgbList[this.contador][0]) {
-    this.contador = this._getPositionColor(index, this.countRgbList);
-
-    this.randomColorA  = this.rgbList[this.contador][0]
-    this.randomColorB  = this.rgbList[this.contador][1]
-    this.randomColorC  = this.rgbList[this.contador][2]
-}
-        
-        //console.log(this.randomColorA)
-        //const this.randomColorA = 123//Math.floor(Math.random() * (240 - 180 +1) + 180)            
-        //const this.randomColorB = 210//Math.floor(Math.random() * (220 - 160 +1) + 160)            
-        //const this.randomColorC = 140//Math.floor(Math.random() * (240 - 160 +1) + 160) 
-
+            this.randomColorA  = this.rgbList[this.contador][0]
+            this.randomColorB  = this.rgbList[this.contador][1]
+            this.randomColorC  = this.rgbList[this.contador][2]
+        }
 
         let idPokemon = item.url.split('/')
         idPokemon = idPokemon[idPokemon.length-2]
@@ -81,7 +68,7 @@ if (this.rgbList[this.contador] && this.rgbList[this.contador][0]) {
             </View>  
             <View style={PokemonAllStyle.bottom}>
                 <Text style={PokemonAllStyle.name}>{item.name.toLowerCase()}</Text>
-                <Text style={PokemonAllStyle.count}>{index + 1}</Text>
+                <Text style={PokemonAllStyle.count}>{idPokemon}</Text>
             </View>
         </View>
 
