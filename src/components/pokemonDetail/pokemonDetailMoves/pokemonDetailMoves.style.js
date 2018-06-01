@@ -57,9 +57,9 @@ export default StyleSheet.create({
         fontSize: 25,
         color: 'white',
         paddingLeft: 12,
-        paddingRight: 3,
+        paddingRight: 5,
         paddingBottom: 5,
-        paddingTop: 5, 
+        paddingTop: 5,
     },
     wait: {
         marginTop: 20

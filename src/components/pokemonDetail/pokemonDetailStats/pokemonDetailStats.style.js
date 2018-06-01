@@ -62,7 +62,7 @@ export default StyleSheet.create({
         paddingLeft: 12,
         paddingRight: 12,
         paddingBottom: 5,
-        paddingTop: 5,       
+        paddingTop: 5,
     },
     iconBack: {
         color: 'white',

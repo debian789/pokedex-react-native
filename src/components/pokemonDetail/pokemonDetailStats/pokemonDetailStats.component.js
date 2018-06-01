@@ -5,6 +5,7 @@ import {
     Image,
     ScrollView,
     ActivityIndicator,
+    TouchableOpacity,
     AsyncStorage
 } from 'react-native'
 import {connect} from 'react-redux'
@@ -36,18 +37,18 @@ class PokemonDetailStatsComponent extends Component {
                             backgroundColor: `rgb(${randomColorA - COLOR_DIFFERENCE}, ${randomColorB - COLOR_DIFFERENCE}, ${randomColorC - COLOR_DIFFERENCE})`
                         }
                     ]}>
-                        <View 
-                            style={PokemonDetailStatsStyle.btnBack}>
-                           
-                                <Icon  onPress={
+                        <View style={PokemonDetailStatsStyle.btnBack}>
+                            <TouchableOpacity onPress={
                                     () => {
                                         return this
                                         .props
                                         .main()
                                     }
-                                
-                                } name="md-arrow-round-back" style={PokemonDetailStatsStyle.iconBack}/>
+                                    
+                                }>
+                                <Icon   name="md-arrow-round-back" style={PokemonDetailStatsStyle.iconBack}/>
                             
+                                </TouchableOpacity>
                         </View>
                         <View style={PokemonDetailStatsStyle.headTitle}>
                             <Text style={PokemonDetailStatsStyle.headTitleText}>{this.props.navigationParameter.params.name}</Text>
