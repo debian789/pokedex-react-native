@@ -60,6 +60,9 @@ export default StyleSheet.create({
         paddingRight: 3,
         paddingBottom: 5,
         paddingTop: 5, 
+    },
+    wait: {
+        marginTop: 20
     }
 
 })

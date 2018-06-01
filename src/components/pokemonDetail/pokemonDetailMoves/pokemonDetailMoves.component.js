@@ -170,7 +170,7 @@ class PokemonDetailMovesComponent extends Component {
                 </ScrollView>
             )
         } else {
-            return (<ActivityIndicator size="large" color="#0000ff"/>)
+            return (<ActivityIndicator style={PokemonDetailMovesStyle.wait} size="large" color="#0000ff"/>)
         }
     }
 }
