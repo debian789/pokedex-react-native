@@ -16,6 +16,7 @@ import PokemonDetailStatsStyle from './pokemonDetailStats.style'
 import StatsComponent from './stats/stats.component'
 import EvolutionsComponent from './evolutions/evolutions.component';
 import constants from '../../../commons/constants'
+import {strings} from '../../../../locales/i18n'
 
 const COLOR_DIFFERENCE = constants.environment.COLOR_DIFFERENCE;
 
@@ -105,14 +106,14 @@ class PokemonDetailStatsComponent extends Component {
                                 backgroundColor: `rgb(${randomColorA - COLOR_DIFFERENCE}, ${randomColorB - COLOR_DIFFERENCE}, ${randomColorC - COLOR_DIFFERENCE})`
                             }
                         ]}>
-                            <Text style={PokemonDetailStatsStyle.titleText}>Evolution
+                            <Text style={PokemonDetailStatsStyle.titleText}>
+                            {strings('detailStats.title')}
                             </Text>
                         </View>
                         <View style={PokemonDetailStatsStyle.containerType}>
                             <EvolutionsComponent/>
                         </View>
                     </ScrollView>
-
                 </View>
             )
         } else {

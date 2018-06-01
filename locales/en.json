@@ -1,5 +1,8 @@
 {
     "global": {
       "title": "POKEDEX"
+    },
+    "detailStats": {
+      "title": "EVOLUTIONS"
     }
   }
