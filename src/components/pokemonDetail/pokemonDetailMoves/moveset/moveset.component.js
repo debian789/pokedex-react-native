@@ -23,10 +23,6 @@ class MovesetComponent extends Component {
     this.data = []
   }
 
-  componentWillUnmount() {
-    this.props.moves = undefined
-  }
-
   _getPositionColor(index, countList) {
     if (index < countList) {
         return index 
@@ -35,7 +31,6 @@ class MovesetComponent extends Component {
         return index - (countList * cuadrante) 
     }
   }
-
 
   render() {
     if (!this.props.isLoading && this.props.detailMoves) {
@@ -48,17 +43,12 @@ class MovesetComponent extends Component {
         return this
         .data
         .map((item, index) => {
-
             this.contador = this._getPositionColor(index, this.countColorBase);
-            debugger 
             const background = {
               backgroundColor: this.colorBase[this.contador]
             }
         
-
-
-          let randNumber = Math.floor(Math.random() * colorBase.length);
-       
+            let randNumber = Math.floor(Math.random() * colorBase.length);
 
           return (
             <View key={index} style={MovesetStyle.containerRow}>

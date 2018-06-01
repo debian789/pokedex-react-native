@@ -1,6 +1,11 @@
 import constants from '../commons/constants'
 import {fetchDataServices} from '../api'
 
+
+export const clearData = () => {
+    return {type: constants.action.CLEAR_DETAIL_POKEMON, isRefreshing: false}
+}
+
 export const getData = () => {
     return {type: constants.action.GET_DETAIL_POKEMON, isRefreshing: true, data: []}
 }
