@@ -4,7 +4,7 @@ import HeaderStyle from './Header.style'
 import {connect} from 'react-redux'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {strings} from '../../../../../locales/i18n'
-import SearchComponent from './search.component'
+import SearchComponent from './search/search.component'
 import {active,desactive} from '../../../../actions/search.action'
 
 
