@@ -4,6 +4,7 @@ import NavigationReducers from './navigation.reducers'
 import PokemonDetailReducers from './pokemonDetail.reducers'
 import PokemonDetailEvolutionReducers from './pokemonDetailEvolution.reducers'
 import NavigationParameterReducers from './navigationParameter.reducers'
+import SearchReducers from './search.reducers'
 
 import {
     connectRequest,
@@ -20,4 +21,5 @@ export default combineReducers({
     entities: entitiesReducer,
     queries: queriesReducer,
     navigationParameter: NavigationParameterReducers,
+    search: SearchReducers
 })
